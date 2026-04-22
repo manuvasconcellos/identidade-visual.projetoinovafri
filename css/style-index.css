@@ -1,0 +1,340 @@
+/* ==========================================
+   1. TIPOGRAFIA OFICIAL
+   Importação via Google Fonts com os pesos exigidos (400=Regular, 600=Semibold, 700=Bold)
+=========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
+
+/* ==========================================
+   2. DESIGN TOKENS (Variáveis Globais)
+   Extração exata do Brandbook InovaFri Hub
+=========================================== */
+:root {
+    /* Cores Absolutas */
+    --color-pink-light: #F9D4E0;
+    --color-purple-neon: #EB96FF;
+    --color-teal-dark: #0B5777;
+    --color-navy-base: #193153;
+
+    /* Cores Funcionais (Semântica) */
+    --bg-body: var(--color-navy-base);
+    --text-primary: #FFFFFF; /* Alto contraste para leitura no fundo escuro */
+    --text-secondary: var(--color-pink-light);
+    --action-primary: var(--color-purple-neon);
+    
+    /* Gradiente da Marca (usado no ícone e elementos de destaque) */
+    --gradient-brand: linear-gradient(135deg, var(--color-purple-neon) 0%, var(--color-teal-dark) 100%);
+
+    /* Tipografia */
+    --font-family-base: 'Sora', sans-serif;
+}
+
+/* ==========================================
+   3. RESET ESTRUTURAL
+   Garante previsibilidade em diferentes navegadores
+=========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================
+   4. COMPORTAMENTO BASE DO DOCUMENTO
+=========================================== */
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased; /* Renderização limpa de fontes no Mac/iOS */
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Tipografia Base */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--action-primary);
+    text-decoration: none;
+    transition: filter 0.2s ease-in-out;
+}
+
+a:hover {
+    filter: brightness(1.2);
+}
+/* ==========================================
+   5. LAYOUT DO CABEÇALHO (HEADER)
+   Uso de Flexbox para separar Logo e Menu
+=========================================== */
+header {
+    display: flex;
+    justify-content: space-between; /* Empurra a logo para a esquerda e o menu para a direita */
+    align-items: center; /* Alinha tudo verticalmente ao centro */
+    padding: 1.5rem 5%; /* Espaçamento interno (topo/baixo e laterais) */
+    background-color: rgba(25, 49, 83, 0.95); /* Fundo da marca com leve transparência */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil separando o header */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Remove as bolinhas da lista e coloca os links lado a lado */
+header nav ul {
+    display: flex;
+    gap: 2rem; /* Espaço entre os links do menu */
+    list-style: none;
+    align-items: center;
+}
+
+header nav a {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+header nav a:hover {
+    color: var(--action-primary);
+}
+
+/* ==========================================
+   6. CONTAINER PRINCIPAL (MAIN)
+   Centraliza o conteúdo da página e limita a largura
+=========================================== */
+main {
+    max-width: 1200px; /* Evita que o site estique infinitamente em telas gigantes */
+    margin: 0 auto; /* Centraliza o bloco na tela */
+    padding: 4rem 2rem; /* Espaçamento interno */
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Distância entre as seções (Busca, Sobre, Mapa) */
+}
+
+/* ==========================================
+   7. ESTILOS DE BOTÕES E FORMULÁRIOS
+=========================================== */
+input[type="search"],
+input[type="text"] {
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-family: var(--font-family-base);
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    background: var(--gradient-brand); /* Usando o gradiente da marca! */
+    color: var(--text-primary);
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font-family-base);
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================
+   8. RODAPÉ (FOOTER)
+=========================================== */
+footer {
+    padding: 3rem 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 4rem;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer ul {
+    list-style: none;
+}
+/* ==========================================
+   9. HERO SECTION (Vitrine Principal)
+=========================================== */
+.hero-section {
+    text-align: center;
+    padding: 6rem 0; /* Cria bastante respiro (whitespace) ao redor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Etiqueta de contexto acima do título */
+.hero-badge {
+    display: inline-block;
+    background: rgba(235, 150, 255, 0.1);
+    color: var(--color-purple-neon);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(235, 150, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Efeito de Gradiente no Texto Principal */
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px; /* Impede que o texto fique comprido e ruim de ler */
+    margin: 0 auto 3rem auto;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   10. BARRA DE BUSCA AVANÇADA
+=========================================== */
+.hero-search-form {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.search-wrapper {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px; /* Formato de "pílula" moderno */
+    padding: 0.5rem;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Efeito de destaque quando o usuário clica para digitar */
+.search-wrapper:focus-within {
+    border-color: var(--color-purple-neon);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(235, 150, 255, 0.2);
+}
+
+.search-wrapper svg {
+    margin-left: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-wrapper input[type="search"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    outline: none; /* Remove a borda padrão feia do navegador */
+}
+
+.search-wrapper button {
+    border-radius: 50px; /* Acompanha o formato da barra */
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+/* ==========================================
+   11. SEÇÕES GENÉRICAS (Alinhamento e Títulos)
+=========================================== */
+.section-container {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 700px; /* Aumentei um pouco a largura para o texto respirar */
+    margin: 0 auto 3rem auto; /* O '3rem' empurra os cartões/mapa para baixo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ==========================================
+   12. CARDS DE VALOR (Seção Sobre)
+=========================================== */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px); /* Efeito de flutuar ao passar o mouse */
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(235, 150, 255, 0.3); /* Borda brilha em roxo */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    color: var(--color-pink-light);
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   13. CONTAINER DO MAPA INTERATIVO
+=========================================== */
+.map-placeholder {
+    width: 100%;
+    height: 500px; /* Altura fixa para a janela do mapa */
+    background: rgba(0, 0, 0, 0.2); /* Fundo mais escuro para o mapa */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-overlay-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+}

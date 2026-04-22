@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Painel - InovFriValley</title>
+</head>
+<body>
+
+    <header role="banner">
+        <div class="brand">
+            <h1>InovFriValley</h1>
+        </div>
+        <nav aria-label="Menu Principal do Usuário">
+            <ul>
+                <li><a href="/dashboard" aria-current="page">Visão Geral</a></li>
+                <li><a href="/mapa-inovacao">Explorar Mapa</a></li>
+                <li><a href="/minhas-conexoes">Minhas Conexões</a></li>
+                <li><button type="button" aria-label="Encerrar sessão">Sair</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="conteudo-principal" tabindex="-1">
+        
+        <header class="dashboard-header">
+            <h2>Bem-vindo(a), [Nome do Usuário]</h2>
+            <p>Gerencie sua atuação estratégica no ecossistema.</p>
+        </header>
+
+        <section aria-labelledby="status-perfil-titulo">
+            <h3 id="status-perfil-titulo" class="sr-only">Status do seu Perfil</h3>
+            
+            <div class="alert alert-warning" role="alert" aria-live="polite">
+                <strong>Análise Pendente:</strong> Seu perfil está sob revisão técnica. Durante este período, seu card não estará visível no Mapa de Inovações.
+            </div>
+            
+            </section>
+
+        <div class="dashboard-grid-layout">
+
+            <article class="card-perfil" aria-labelledby="resumo-cadastral">
+                <header>
+                    <h3 id="resumo-cadastral">Dados Básicos</h3>
+                    <a href="/perfil/editar/dados" aria-label="Editar informações pessoais e organizacionais">Editar Dados</a>
+                </header>
+                <dl>
+                    <dt>Organização / Nome:</dt>
+                    <dd>[Nome da Empresa / Nome do Usuário]</dd>
+                    
+                    <dt>Tipo de Ator (H12):</dt>
+                    <dd>[Ex: Startup, Universidade]</dd>
+
+                    <dt>Cargo / Função (H6, H7):</dt>
+                    <dd>[Ex: CEO, Pesquisador]</dd>
+                    
+                    <dt>Localidade (H9):</dt>
+                    <dd>[Cidade, UF]</dd>
+                </dl>
+            </article>
+
+            <article class="card-ecossistema" aria-labelledby="resumo-ecossistema">
+                <header>
+                    <h3 id="resumo-ecossistema">Sua Atuação no Ecossistema</h3>
+                    <a href="/perfil/editar/estrategia" aria-label="Editar estratégia de conexão no ecossistema">Atualizar Estratégia</a>
+                </header>
+                <dl>
+                    <dt>Nível de Envolvimento:</dt>
+                    <dd>[Ex: Muito Ativo]</dd>
+
+                    <dt>Perfil de Conexão:</dt>
+                    <dd>[Ex: Empreendedor, Mentor]</dd>
+
+                    <dt>O que você oferece (Recursos):</dt>
+                    <dd>
+                        <ul>
+                            <li>[Ex: Conhecimento técnico]</li>
+                            <li>[Ex: Mentoria em Gestão]</li>
+                        </ul>
+                    </dd>
+
+                    <dt>O que você busca (Expectativas):</dt>
+                    <dd>[Ex: Network, Captação de Recursos]</dd>
+                </dl>
+            </article>
+
+        </div>
+
+        <section aria-labelledby="acoes-rapidas-titulo">
+            <h3 id="acoes-rapidas-titulo" class="sr-only">Ações Rápidas</h3>
+            <div class="cta-container">
+                <p>Mantenha seus temas de interesse atualizados para receber conexões mais precisas.</p>
+                <a href="/perfil/temas" class="btn-primary">Gerenciar Temas de Interesse</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 InovFriValley.</p>
+        <nav aria-label="Links de suporte">
+            <ul>
+                <li><a href="/suporte">Central de Ajuda</a></li>
+                <li><a href="/termos">Termos de Uso</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>

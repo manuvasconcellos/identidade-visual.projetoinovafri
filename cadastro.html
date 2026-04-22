@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Direto - InovFriValley</title>
+</head>
+<body>
+
+    <main class="container-cadastro-direto" aria-labelledby="titulo-principal">
+        <header class="form-header">
+            <h1 id="titulo-principal">Integração ao Ecossistema</h1>
+            <p>Preencha os dados abaixo para registrar sua atuação em Nova Friburgo.</p>
+        </header>
+
+        <form action="/api/cadastro/completo" method="POST" id="form-registro-direto">
+
+            <fieldset class="form-section">
+                <legend>1. Credenciais e Contato</legend>
+
+                <div class="form-grid-2">
+                    <div class="input-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required autocomplete="name">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">E-mail Institucional/Pessoal *</label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="input-group">
+                        <label for="senha">Criar Senha *</label>
+                        <input type="password" id="senha" name="senha" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="whatsapp">WhatsApp (com DDD) *</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(22) 90000-0000" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cpf">CPF (Opcional)</label>
+                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00">
+                    </div>
+                </div>
+                
+                <div class="form-grid-3">
+                    <div class="input-group">
+                        <label for="nascimento">Data de Nascimento *</label>
+                        <input type="date" id="nascimento" name="nascimento" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="estado">Estado *</label>
+                        <select id="estado" name="estado" required>
+                            <option value="RJ" selected>Rio de Janeiro</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cidade">Cidade *</label>
+                        <select id="cidade" name="cidade" required>
+                            <option value="nova-friburgo" selected>Nova Friburgo</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <hr aria-hidden="true">
+
+            <fieldset class="form-section">
+                <legend>2. Atuação Profissional</legend>
+
+                <div class="input-group">
+                    <label for="tipo-ator">Identificação no Ecossistema (Tipo de Ator) *</label>
+                    <select id="tipo-ator" name="tipoAtor" required>
+                        <option value="">Selecione sua categoria primária...</option>
+                        <option value="startup">Startup</option>
+                        <option value="empresa">Empresa</option>
+                        <option value="empreendedor">Empreendedor</option>
+                        <option value="investidor">Investidor</option>
+                        <option value="universidade">Universidade / Instituição de Ensino</option>
+                        <option value="governo">Governo</option>
+                        <option value="estudante">Estudante</option>
+                    </select>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="input-group">
+                        <label for="nome-organizacao">Nome da Organização (Opcional)</label>
+                        <input type="text" id="nome-organizacao" name="nomeOrganizacao">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cnpj">CNPJ (Opcional)</label>
+                        <input type="text" id="cnpj" name="cnpj">
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="input-group">
+                        <label for="cargo">Cargo Atual (Opcional)</label>
+                        <input type="text" id="cargo" name="cargo">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="funcao">Função no Projeto (Opcional)</label>
+                        <input type="text" id="funcao" name="funcao">
+                    </div>
+                </div>
+            </fieldset>
+
+            <hr aria-hidden="true">
+
+            <fieldset class="form-section">
+                <legend>3. Perfil de Conexão no Ecossistema</legend>
+
+                <div class="form-grid-2">
+                    <div class="input-group">
+                        <label for="nivel-envolvimento">Nível de Envolvimento Esperado *</label>
+                        <select id="nivel-envolvimento" name="nivelEnvolvimento" required>
+                            <option value="">Selecione...</option>
+                            <option value="muito-ativo">Muito Ativo</option>
+                            <option value="moderadamente">Moderadamente</option>
+                            <option value="pouco-ativo">Pouco Ativo</option>
+                            <option value="iniciante">Ainda não participo, mas gostaria</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="voluntariado">Disponibilidade para Voluntariado? *</label>
+                        <select id="voluntariado" name="voluntariado" required>
+                            <option value="">Selecione...</option>
+                            <option value="sim">Sim, tenho interesse</option>
+                            <option value="nao">Não no momento</option>
+                            <option value="talvez">Talvez futuramente</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group checkbox-matrix">
+                    <label>Expectativas ao participar (Marque as opções relevantes):</label>
+                    <div class="options-grid">
+                        <label><input type="checkbox" name="expectativa" value="network"> Network e Parcerias</label>
+                        <label><input type="checkbox" name="expectativa" value="projetos"> Desenvolvimento de Projetos</label>
+                        <label><input type="checkbox" name="expectativa" value="investimentos"> Captação de Investimentos</label>
+                        <label><input type="checkbox" name="expectativa" value="aprendizado"> Aprendizado Contínuo</label>
+                        <label><input type="checkbox" name="expectativa" value="visibilidade"> Visibilidade para o Negócio</label>
+                    </div>
+                </div>
+
+                <div class="input-group checkbox-matrix">
+                    <label>Temas de Interesse (Marque os principais):</label>
+                    <div class="options-grid">
+                        <label><input type="checkbox" name="temas" value="inovacao"> Inovação & Startups</label>
+                        <label><input type="checkbox" name="temas" value="tecnologia"> Tecnologia & Transformação Digital</label>
+                        <label><input type="checkbox" name="temas" value="sustentabilidade"> Sustentabilidade</label>
+                        <label><input type="checkbox" name="temas" value="economia-criativa"> Economia Criativa</label>
+                        <label><input type="checkbox" name="temas" value="turismo"> Turismo Inteligente</label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="desafios">Na sua opinião, qual o maior desafio para fortalecer a inovação em Nova Friburgo?</label>
+                    <textarea id="desafios" name="desafios" rows="3" placeholder="Sua visão crítica sobre o cenário local..."></textarea>
+                </div>
+            </fieldset>
+
+            <div class="form-actions-submit">
+                <p><small>Ao clicar em submeter, seu perfil passará por uma auditoria (H5) antes de se tornar público.</small></p>
+                <button type="submit" class="btn-primary-massive">Registrar Perfil no Ecossistema</button>
+            </div>
+
+        </form>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InovaFri Hub</title>
+    <link rel="stylesheet" href="css/style-index.css">
+    </head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="/" aria-label="Página Inicial">
+                <img src="/assets/logo.svg" alt="Logotipo do Sistema">
+            </a>
+        </div>
+        
+        <nav aria-label="Navegação principal">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#mapa-das-inovacoes">Mapa das Inovações</a></li>
+                <li><a href="/login.html">Login</a></li>
+                <li><a href="/cadastro.html">Cadastre-se</a></li>
+                <li><a href="/perfil-admin.html">Login Administrador</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="hero" aria-labelledby="hero-titulo" class="hero-section">
+    <div class="hero-content">
+        <span class="hero-badge">Ecossistema de Nova Friburgo</span>
+        
+        <h1 id="hero-titulo">Inovação que Transforma</h1>
+        
+        <p class="hero-subtitle">
+            Conecte-se com startups, pesquisadores e investidores. Descubra os atores que estão moldando o futuro da nossa região.
+        </p>
+
+        <form action="/search" method="GET" role="search" class="hero-search-form">
+            <label for="input-busca" class="sr-only">Busca por pessoa ou organização</label>
+            <div class="search-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input 
+                    type="search" 
+                    id="input-busca" 
+                    name="q" 
+                    placeholder="Buscar startups, mentores, tecnologias..." 
+                    required
+                >
+                <button type="submit">Explorar</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+        <section id="sobre" aria-labelledby="sobre-titulo" class="section-container">
+            <header class="section-header">
+                <h2 id="sobre-titulo">Por que participar?</h2>
+                <p>O InovaFri Hub conecta pessoas, ideias e tecnologias para impulsionar o desenvolvimento de Nova Friburgo.</p>
+            </header>
+
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Conexões Estratégicas</h3>
+                    <p>Encontre parceiros, mentores e investidores alinhados com o seu momento de negócio.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Visibilidade</h3>
+                    <p>Coloque sua startup ou projeto no radar das principais organizações do ecossistema regional.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-icon">💡</div>
+                    <h3>Inovação Colaborativa</h3>
+                    <p>Acesse recursos, laboratórios e conhecimentos técnicos compartilhados pela comunidade.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="mapa-das-inovacoes" aria-labelledby="mapa-titulo" class="section-container">
+            <header class="section-header">
+                <h2 id="mapa-titulo">Mapa do Ecossistema</h2>
+                <p>Explore a distribuição de startups, universidades e polos tecnológicos na nossa região.</p>
+            </header>
+
+            <div id="map-container" class="map-placeholder" role="application" aria-label="Mapa interativo de inovações">
+                <div class="map-overlay-message">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-purple-neon)" stroke-width="1.5">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>Carregando dados geográficos de Nova Friburgo...</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            
+            <section class="redes-sociais" aria-labelledby="redes-titulo">
+                <h3 id="redes-titulo">Redes Sociais</h3>
+                <ul>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                </ul>
+            </section>
+
+            <section class="contato" aria-labelledby="contato-titulo">
+                <h3 id="contato-titulo">Contato</h3>
+                <address>
+                    <p>Email: <a href="mailto:contato@exemplo.com.br">contato@exemplo.com.br</a></p>
+                </address>
+            </section>
+            
+        </div>
+    </footer>
+
+</body>
+</html>

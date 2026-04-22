@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InovFriValley - Painel Administrativo Operacional</title>
+</head>
+<body>
+
+    <header class="admin-header" role="banner">
+        <div class="brand">
+            <h1>InovFriValley | Admin </h1>
+        </div>
+        <div class="admin-profile">
+            <span>Operador Técnico (Admin)</span>
+            <button aria-label="Sair do sistema">Logout</button>
+        </div>
+    </header>
+
+    <div class="admin-layout">
+        
+        <nav class="admin-sidebar" aria-label="Menu de Administração">
+            <ul>
+                <li class="nav-section-title">Operação de Fluxo</li>
+                <li><a href="#fluxo-aprovacoes" aria-current="page">Aprovações Pendentes (H5)</a></li>
+                
+                <li class="nav-section-title">Governança de Dados</li>
+                <li><a href="#gestao-tipos-ator">Tipos de Ator (H12)</a></li>
+                <li><a href="#gestao-perfis-conexao">Perfis de Conexão (H10)</a></li>
+                <li><a href="#gestao-cargos-funcoes">Cargos & Funções (H6 / H7)</a></li>
+                <li><a href="#gestao-categorias">Categorias & Opções (H8 / H8.1)</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-workspace" role="main">
+
+            <section id="fluxo-aprovacoes" aria-labelledby="title-aprovacoes">
+                <header class="section-header">
+                    <h2 id="title-aprovacoes">Fila de Aprovação de Atores</h2>
+                    <p class="subtitle">Analise e autorize a entrada de novos atores no ecossistema de Nova Friburgo.</p>
+                </header>
+
+                <div class="data-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Data Cadastro</th>
+                                <th>Nome / Organização</th>
+                                <th>Tipo (H12)</th>
+                                <th>Perfil (H10)</th>
+                                <th>Nível de Envolvimento</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22/04/2026</td>
+                                <td>
+                                    <strong>João Silva</strong><br>
+                                    <small>Startup Inovadora LTDA</small>
+                                </td>
+                                <td>Empreendedor</td>
+                                <td>Empreendedor / Mentor</td>
+                                <td>Muito ativo</td>
+                                <td class="action-cell">
+                                    <button class="btn-secondary" aria-label="Ver detalhes de João Silva">Detalhes (H1-H4)</button>
+                                    <button class="btn-success" aria-label="Aprovar João Silva">Aprovar</button>
+                                    <button class="btn-danger" aria-label="Rejeitar João Silva">Rejeitar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr aria-hidden="true">
+
+            <div class="grid-layout-2col">
+                
+                <section id="gestao-tipos-ator" aria-labelledby="title-tipos">
+                    <header class="section-header">
+                        <h2 id="title-tipos">Tipos de Ator (H12)</h2>
+                    </header>
+                    <form action="/api/admin/tipos-ator" method="POST" class="admin-form">
+                        <div class="form-group">
+                            <label for="novo-tipo-ator">Registrar Novo Tipo</label>
+                            <div class="input-action-group">
+                                <input type="text" id="novo-tipo-ator" name="tipoAtor" placeholder="Ex: Organização da Sociedade Civil" required>
+                                <button type="submit" class="btn-primary">Adicionar</button>
+                            </div>
+                        </div>
+                    </form>
+                    </section>
+
+                <section id="gestao-perfis-conexao" aria-labelledby="title-perfis">
+                    <header class="section-header">
+                        <h2 id="title-perfis">Perfis de Conexão (H10)</h2>
+                    </header>
+                    <form action="/api/admin/perfis-conexao" method="POST" class="admin-form">
+                        <div class="form-group">
+                            <label for="novo-perfil-conexao">Registrar Novo Perfil</label>
+                            <div class="input-action-group">
+                                <input type="text" id="novo-perfil-conexao" name="perfilConexao" placeholder="Ex: Gestor Público" required>
+                                <button type="submit" class="btn-primary">Adicionar</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+
+            <hr aria-hidden="true">
+
+            <section id="gestao-cargos-funcoes" aria-labelledby="title-cargos">
+                <header class="section-header">
+                    <h2 id="title-cargos">Taxonomia de Cargos e Funções (H6, H7)</h2>
+                </header>
+                <div class="form-row">
+                    <form action="/api/admin/cargos" method="POST" class="admin-form">
+                        <fieldset>
+                            <legend>Registrar Cargo Histórico</legend>
+                            <input type="text" name="cargo" placeholder="Descrição do Cargo" required>
+                            <button type="submit">Salvar Cargo</button>
+                        </fieldset>
+                    </form>
+
+                    <form action="/api/admin/funcoes" method="POST" class="admin-form">
+                        <fieldset>
+                            <legend>Registrar Função em Projeto</legend>
+                            <input type="text" name="funcao" placeholder="Descrição da Função" required>
+                            <button type="submit">Salvar Função</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </section>
+
+            <hr aria-hidden="true">
+
+            <section id="gestao-categorias" aria-labelledby="title-categorias">
+                <header class="section-header">
+                    <h2 id="title-categorias">Matriz de Categorias e Opções (H8, H8.1)</h2>
+                    <p class="subtitle">Gerencie as tags que alimentarão os metadados estratégicos (H4).</p>
+                </header>
+
+                <div class="admin-card">
+                    <h3>1. Registrar Categoria Base (H8)</h3>
+                    <form action="/api/admin/categorias" method="POST" class="admin-form layout-inline">
+                        <label for="nome-categoria" class="sr-only">Nome da Categoria</label>
+                        <input type="text" id="nome-categoria" name="nomeCategoria" placeholder="Ex: Temas de Interesse" required>
+                        <button type="submit">Criar Categoria</button>
+                    </form>
+                </div>
+
+                <div class="admin-card">
+                    <h3>2. Registrar Opção por Categoria (H8.1)</h3>
+                    <form action="/api/admin/opcoes" method="POST" class="admin-form">
+                        <div class="form-group">
+                            <label for="select-categoria">Selecione a Categoria Mãe</label>
+                            <select id="select-categoria" name="idCategoria" required>
+                                <option value="">-- Selecione --</option>
+                                <option value="1">Contribuições no ecossistema</option>
+                                <option value="2">Tipo de Contribuição Voluntária</option>
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nome-opcao">Descrição da Opção</label>
+                            <div class="input-action-group">
+                                <input type="text" id="nome-opcao" name="nomeOpcao" placeholder="Ex: Organização de eventos" required>
+                                <button type="submit">Vincular Opção</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>

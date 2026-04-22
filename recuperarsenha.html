@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperação de Acesso - InovFriValley</title>
+</head>
+<body>
+
+    <main class="recuperacao-container" aria-labelledby="recuperacao-titulo">
+        <header>
+            <h1 id="recuperacao-titulo">Recuperação de Acesso</h1>
+            <p>Insira o e-mail vinculado ao seu perfil no ecossistema. Enviaremos um link seguro para a criação de uma nova senha.</p>
+        </header>
+
+        <section class="recuperacao-content">
+            <form action="/api/auth/solicitar-recuperacao" method="POST" id="form-recuperacao">
+                
+                <fieldset>
+                    <legend class="sr-only">Dados para identificação da conta</legend>
+                    
+                    <div class="input-group">
+                        <label for="email-recuperacao">E-mail Cadastrado</label>
+                        <input 
+                            type="email" 
+                            id="email-recuperacao" 
+                            name="email" 
+                            required 
+                            autofocus
+                            autocomplete="email"
+                            placeholder="seu.nome@exemplo.com.br"
+                            aria-describedby="email-help"
+                        >
+                        <small id="email-help">Certifique-se de digitar o mesmo endereço utilizado na etapa de Dados Pessoais (H1).</small>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary-block">Enviar Link de Recuperação</button>
+                </div>
+            </form>
+
+            <div id="alerta-sucesso" class="estado-sucesso" hidden aria-live="polite">
+                <h2>Verifique sua caixa de entrada</h2>
+                <p>
+                    Se o endereço <strong>informado</strong> estiver registrado em nossa base de dados, 
+                    você receberá as instruções em instantes.
+                </p>
+                <p><small>Atenção: Não se esqueça de verificar a pasta de Spam ou Lixo Eletrônico.</small></p>
+                
+                <a href="/login.html" class="btn-secondary">Retornar ao Login</a>
+            </div>
+
+        </section>
+
+        <footer class="recuperacao-footer">
+            <p>Lembrou da sua senha? <a href="/login.html">Voltar para o Login</a></p>
+        </footer>
+    </main>
+
+</body>
+</html>
