@@ -1,0 +1,185 @@
+/* ==========================================
+   RECUPERAÇÃO DE ACESSO (CONTENÇÃO DE CHURN)
+=========================================== */
+
+/* 1. Reset e Foco Absoluto (Túnel de Conversão) */
+body {
+    background-color: #193153; /* Fundo oficial da marca */
+    color: #ffffff;
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 2. O Cartão Central */
+.recuperacao-container {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    margin: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.recuperacao-container header h1 {
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
+    color: #ffffff;
+}
+
+.recuperacao-container header p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+/* 3. Estrutura do Formulário */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Mantém os labels alinhados à esquerda para leitura em 'F' */
+}
+
+.input-group {
+    margin-bottom: 2rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #F9D4E0; /* Rosa claro da identidade visual */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1.1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #EB96FF;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 3px rgba(235, 150, 255, 0.15);
+}
+
+.input-group small {
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.4;
+}
+
+/* 4. Ação Principal */
+.btn-primary-block {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary-block:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 10px 20px rgba(235, 150, 255, 0.2);
+}
+
+/* 5. Rodapé (Escape Hatch) */
+.recuperacao-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.recuperacao-footer p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.recuperacao-footer a {
+    color: #EB96FF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: text-decoration 0.2s;
+}
+
+.recuperacao-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   6. ESTADO DE SUCESSO (Feedback Visual)
+=========================================== */
+.estado-sucesso {
+    background: rgba(0, 210, 132, 0.05);
+    border: 1px solid rgba(0, 210, 132, 0.2);
+    padding: 2rem;
+    border-radius: 8px;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.estado-sucesso h2 {
+    color: #00d284;
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+}
+
+.estado-sucesso p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.btn-secondary {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #ffffff;
+}
+
+/* Animação suave para quando o bloco de sucesso for ativado via JS */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

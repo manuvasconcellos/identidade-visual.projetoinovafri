@@ -1,0 +1,278 @@
+/* ==========================================
+   FORÇAR O DARK MODE E TIPOGRAFIA BASE
+=========================================== */
+body {
+    background-color: #193153; /* O fundo escuro da InovaFri Hub */
+    color: #ffffff;
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Alinhamento do Menu do Topo */
+header[role="banner"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: rgba(25, 49, 83, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header[role="banner"] nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header[role="banner"] nav a, 
+header[role="banner"] nav button {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Sora', sans-serif;
+}
+
+header[role="banner"] nav a:hover,
+header[role="banner"] nav button:hover {
+    color: #EB96FF;
+}
+/* ==========================================
+   15. DASHBOARD DO ATOR (Área Logada)
+=========================================== */
+
+/* Header Interno do Dashboard */
+.dashboard-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-header h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   16. ALERTAS DE ESTADO (Feedback do Sistema)
+=========================================== */
+.alert {
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.alert-warning {
+    /* Utilizando as cores da marca de forma sutil para alertas */
+    background: rgba(235, 150, 255, 0.05); 
+    border-left: 4px solid var(--color-purple-neon, #EB96FF);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.alert-warning strong {
+    color: var(--color-purple-neon, #EB96FF);
+}
+
+/* ==========================================
+   17. GRID DO PAINEL E CARTÕES (Cards)
+=========================================== */
+.dashboard-grid-layout {
+    display: grid;
+    /* Cria colunas responsivas nativamente sem media queries extras */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.card-perfil,
+.card-ecossistema {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease;
+}
+
+.card-perfil:hover,
+.card-ecossistema:hover {
+    border-color: rgba(235, 150, 255, 0.3);
+}
+
+/* Cabeçalho dos Cartões */
+.card-perfil header,
+.card-ecossistema header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-perfil h3,
+.card-ecossistema h3 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.card-perfil a,
+.card-ecossistema a {
+    font-size: 0.85rem;
+    color: var(--color-purple-neon, #EB96FF);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card-perfil a:hover,
+.card-ecossistema a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   18. LISTAS DE DEFINIÇÃO (Dados do Usuário)
+=========================================== */
+dl {
+    margin: 0;
+}
+
+dt {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-pink-light, #F9D4E0);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+dd {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-left: 0;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+dd:last-child {
+    margin-bottom: 0;
+}
+
+dd ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+dd ul li {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.25rem;
+}
+
+/* ==========================================
+   19. CALL TO ACTION (Ações Rápidas)
+=========================================== */
+.cta-container {
+    background: linear-gradient(135deg, rgba(25, 49, 83, 0.5) 0%, rgba(11, 87, 119, 0.3) 100%);
+    border: 1px solid rgba(11, 87, 119, 0.5);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cta-container p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    max-width: 500px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--gradient-brand, linear-gradient(135deg, #EB96FF 0%, #0B5777 100%));
+    color: #ffffff;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(235, 150, 255, 0.2);
+    filter: brightness(1.1);
+}
+/* Limita a largura do dashboard e centraliza-o no ecrã */
+#conteudo-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 5%;
+}
+/* ==========================================
+   20. RODAPÉ DO DASHBOARD
+=========================================== */
+footer[role="contentinfo"] {
+    margin-top: 4rem; /* Cria um respiro após a área principal */
+    padding: 2rem 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha divisória muito subtil */
+    display: flex;
+    justify-content: space-between; /* Afasta o copyright dos links */
+    align-items: center;
+    flex-wrap: wrap; /* Garante que não quebra em ecrãs pequenos */
+    gap: 1.5rem;
+}
+
+footer[role="contentinfo"] p {
+    color: rgba(255, 255, 255, 0.4); /* Texto mais apagado para não distrair */
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+footer[role="contentinfo"] nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none; /* Remove as bolinhas azuis */
+    margin: 0;
+    padding: 0;
+}
+
+footer[role="contentinfo"] nav a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+}
+
+footer[role="contentinfo"] nav a:hover {
+    color: #EB96FF; /* Brilha com a cor neon da marca ao passar o rato */
+}
+
+/* Responsividade para telemóveis */
+@media (max-width: 600px) {
+    footer[role="contentinfo"] {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+}
