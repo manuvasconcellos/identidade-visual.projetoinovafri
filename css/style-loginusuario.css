@@ -1,159 +1,83 @@
-/* ==========================================
-   ARQUITETURA DE AUTENTICAÇÃO (SPLIT-SCREEN)
-=========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
 
-/* Reset de alinhamento para o viewport do login */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #193153; /* Cor base do InovaFri Hub */
-    font-family: 'Sora', sans-serif;
-    color: #ffffff;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; margin: 0;
+    background-color: #193153; font-family: 'Sora', sans-serif; color: #ffffff;
 }
 
-/* O Container Central que abriga a tela dividida */
 .login-container {
-    display: flex;
-    width: 100%;
-    max-width: 900px;
-    min-height: 550px;
+    display: flex; width: 100%; max-width: 1000px; min-height: 600px;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    overflow: hidden; /* Corta os cantos quadrados da imagem interna */
-    margin: 2rem;
+    border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden; margin: 2rem;
 }
 
-/* ------------------------------------------
-   COLUNA ESQUERDA: Ancora Visual
------------------------------------------- */
+/* --- COLUNA ESQUERDA (MEDIA) --- */
 .login-media {
-    flex: 1; /* Ocupa 50% do espaço */
-    background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex: 1; background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
+    position: relative; display: flex; flex-direction: column; justify-content: flex-end;
 }
-
 .login-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
-    opacity: 0.5; /* Mistura a imagem com o gradiente de fundo */
-    mix-blend-mode: multiply; /* Efeito de cor da identidade visual */
+    position: absolute; width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.3; mix-blend-mode: multiply; z-index: 1;
 }
+.media-overlay-text {
+    position: relative; z-index: 2; padding: 3rem;
+}
+.media-overlay-text h2 { color: #ffffff; font-size: 2rem; line-height: 1.3; margin: 0; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
 
-/* ------------------------------------------
-   COLUNA DIREITA: Formulário
------------------------------------------- */
+/* --- COLUNA DIREITA (FORMULÁRIO) --- */
 .login-content {
-    flex: 1; /* Ocupa os outros 50% */
-    padding: 3.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #193153; 
+    flex: 1; padding: 4rem; display: flex; flex-direction: column;
+    justify-content: center; background-color: #193153; 
 }
 
-.login-content header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
-}
+/* Identidade Visual */
+.brand-header { margin-bottom: 2rem; }
+.brand-text { font-size: 1.6rem; font-weight: 700; color: #ffffff; letter-spacing: -0.5px; }
+.brand-highlight { background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-/* Campos de Input */
-fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-}
+.login-header h1 { font-size: 2rem; margin: 0 0 0.5rem 0; color: #ffffff; }
+.login-header p { color: rgba(255, 255, 255, 0.6); margin: 0 0 2rem 0; font-size: 0.95rem; }
 
-.input-group {
-    margin-bottom: 1.5rem;
-}
+/* Mensagens de Erro */
+.alert-error { background: rgba(255, 77, 77, 0.1); border-left: 3px solid #ff4d4d; color: #ff8080; padding: 1rem; border-radius: 4px; font-size: 0.85rem; margin-bottom: 1.5rem; }
+.alert-error.hidden { display: none; }
 
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: #F9D4E0; /* Rosa claro da identidade */
-    font-weight: 600;
-}
+/* Inputs */
+fieldset { border: none; padding: 0; margin: 0; }
+.input-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
+.input-group label { margin-bottom: 0.5rem; font-size: 0.85rem; color: #F9D4E0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.input-group input { width: 100%; padding: 1rem; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #ffffff; font-family: inherit; font-size: 1rem; transition: all 0.2s ease-in-out; }
+.input-group input:focus { outline: none; border-color: #EB96FF; background: rgba(255, 255, 255, 0.05); box-shadow: 0 0 0 3px rgba(235, 150, 255, 0.15); }
+.input-group input.error-input { border-color: #ff4d4d; }
 
-.input-group input {
-    width: 100%;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 1rem;
-    transition: all 0.2s ease-in-out;
-    box-sizing: border-box;
-}
+/* UX de Senha e Links */
+.password-wrapper { position: relative; display: flex; align-items: center; margin-bottom: 0.5rem; }
+.password-wrapper input { padding-right: 3rem; }
+.toggle-password { position: absolute; right: 10px; background: none; border: none; color: rgba(255, 255, 255, 0.4); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; transition: color 0.2s; }
+.toggle-password:hover, .toggle-password.active { color: #EB96FF; }
 
-.input-group input:focus {
-    outline: none;
-    border-color: #EB96FF;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 0 3px rgba(235, 150, 255, 0.2);
-}
+#link-recuperar { color: rgba(255, 255, 255, 0.5); text-decoration: none; font-size: 0.85rem; align-self: flex-end; transition: color 0.2s; }
+#link-recuperar:hover { color: #EB96FF; text-decoration: underline; }
 
-/* Ações (Recuperar Senha e Botão) */
-.form-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
+/* Ações / Call to Action */
+.form-actions { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+.btn-submit { width: 100%; padding: 1.2rem; background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%); border: none; border-radius: 6px; color: #ffffff; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(235, 150, 255, 0.2); filter: brightness(1.1); }
+.btn-submit:disabled { background: #3a4b63; color: rgba(255, 255, 255, 0.5); cursor: not-allowed; transform: none; box-shadow: none; }
 
-#link-recuperar {
-    color: #EB96FF;
-    text-decoration: none;
-    font-size: 0.85rem;
-    align-self: flex-start;
-}
+.register-prompt { text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin: 0; }
+.link-destaque { color: #EB96FF; font-weight: 600; text-decoration: none; transition: filter 0.2s; }
+.link-destaque:hover { filter: brightness(1.2); text-decoration: underline; }
 
-#link-recuperar:hover {
-    text-decoration: underline;
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
-    border: none;
-    border-radius: 6px;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: filter 0.2s;
-}
-
-.btn-submit:hover {
-    filter: brightness(1.1);
-}
-
-/* ------------------------------------------
-   RESPONSIVIDADE (Mobile)
------------------------------------------- */
-@media (max-width: 768px) {
-    .login-container {
-        flex-direction: column; /* Empilha o formulário sob a imagem */
-    }
-    
-    .login-media {
-        display: none; /* Em telas muito pequenas, ocultar a imagem aumenta a CVR por reduzir o scroll até a ação */
-    }
-    
-    .login-content {
-        padding: 2rem;
-    }
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 850px) {
+    .login-container { flex-direction: column; margin: 1rem; min-height: auto; }
+    .login-media { display: none; } /* Reduz atrito visual e scroll no mobile */
+    .login-content { padding: 2.5rem 1.5rem; }
 }

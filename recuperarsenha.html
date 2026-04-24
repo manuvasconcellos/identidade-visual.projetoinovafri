@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Senha</title>
-    
+    <title>Recuperar Senha - InovaFri Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/style-recuperarsenha.css">
 </head>
 <body>
 
     <main class="recuperacao-container" aria-labelledby="recuperacao-titulo">
-        <header>
+        
+        <div class="brand-header">
+            <span class="brand-text">InovaFri<span class="brand-highlight">Hub</span></span>
+        </div>
+
+        <header id="header-instrucoes">
             <h1 id="recuperacao-titulo">Recuperação de Acesso</h1>
-            <p>Insira o e-mail vinculado ao seu perfil no ecossistema. Enviaremos um link seguro para a criação de uma nova senha.</p>
+            <p>Insira o e-mail vinculado ao seu perfil. Enviaremos um link seguro para a criação de uma nova senha.</p>
         </header>
 
         <section class="recuperacao-content">
-            <form action="/api/auth/solicitar-recuperacao" method="POST" id="form-recuperacao">
-                
+            
+            <div id="error-message" class="alert-error hidden" role="alert"></div>
+
+            <form action="/api/auth/solicitar-recuperacao" method="POST" id="form-recuperacao" novalidate>
                 <fieldset>
                     <legend class="sr-only">Dados para identificação da conta</legend>
                     
@@ -37,16 +42,16 @@
                             placeholder="seu.nome@exemplo.com.br"
                             aria-describedby="email-help"
                         >
-                        <small id="email-help">Certifique-se de digitar o mesmo endereço utilizado na etapa de Dados Pessoais (H1).</small>
+                        <small id="email-help">Certifique-se de digitar o mesmo endereço utilizado no seu cadastro.</small>
                     </div>
                 </fieldset>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn-primary-block">Enviar Link de Recuperação</button>
+                    <button type="submit" id="btn-submit" class="btn-primary-block">Enviar Link de Recuperação</button>
                 </div>
             </form>
 
-            <div id="alerta-sucesso" class="estado-sucesso" hidden aria-live="polite">
+            <div id="alerta-sucesso" class="estado-sucesso hidden" aria-live="polite">
                 <h2>Verifique sua caixa de entrada</h2>
                 <p>
                     Se o endereço <strong>informado</strong> estiver registrado em nossa base de dados, 
@@ -54,15 +59,16 @@
                 </p>
                 <p><small>Atenção: Não se esqueça de verificar a pasta de Spam ou Lixo Eletrônico.</small></p>
                 
-                <a href="/login.html" class="btn-secondary">Retornar ao Login</a>
+                <a href="login.html" class="btn-secondary">Retornar ao Login</a>
             </div>
 
         </section>
 
-        <footer class="recuperacao-footer">
-            <p>Lembrou da sua senha? <a href="/login.html">Voltar para o Login</a></p>
+        <footer class="recuperacao-footer" id="footer-voltar">
+            <p>Lembrou da sua senha? <a href="login.html">Voltar para o Login</a></p>
         </footer>
     </main>
 
+    <script src="js/recuperar.js"></script>
 </body>
 </html>

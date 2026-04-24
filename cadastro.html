@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Painel - InovaFri Hub</title>
-    
+    <title>Cadastro - InovaFri Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
-    
     <link rel="stylesheet" href="css/style-cadastrousu.css">
 </head>
 <body>
+    
     <header>
         <div class="logo">
-        <a href="index.html" aria-label="Página Inicial">
-        <span class="brand-text">InovaFri<span class="brand-highlight">Hub</span></span>
-        </a>
-    </div>
+            <a href="index.html" aria-label="Página Inicial">
+                <span class="brand-text">InovaFri<span class="brand-highlight">Hub</span></span>
+            </a>
+        </div>
+    </header>
     
     <main class="container-cadastro-direto" aria-labelledby="titulo-principal">
         <header class="form-header">
@@ -52,12 +50,12 @@
 
                     <div class="input-group">
                         <label for="whatsapp">WhatsApp (com DDD) *</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(22) 90000-0000" required>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(22) 90000-0000" required maxlength="15">
                     </div>
 
                     <div class="input-group">
                         <label for="cpf">CPF (Opcional)</label>
-                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00">
+                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14">
                     </div>
                 </div>
                 
@@ -83,8 +81,6 @@
                 </div>
             </fieldset>
 
-            <hr aria-hidden="true">
-
             <fieldset class="form-section">
                 <legend>2. Atuação Profissional</legend>
 
@@ -94,7 +90,7 @@
                         <option value="">Selecione sua categoria primária...</option>
                         <option value="startup">Startup</option>
                         <option value="empresa">Empresa</option>
-                        <option value="empreendedor">Empreendedor</option>
+                        <option value="empreendedor">Empreendedor (Solo)</option>
                         <option value="investidor">Investidor</option>
                         <option value="universidade">Universidade / Instituição de Ensino</option>
                         <option value="governo">Governo</option>
@@ -102,15 +98,15 @@
                     </select>
                 </div>
 
-                <div class="form-grid-2">
+                <div class="form-grid-2 dynamic-field hidden" id="linha-organizacao">
                     <div class="input-group">
-                        <label for="nome-organizacao">Nome da Organização (Opcional)</label>
+                        <label for="nome-organizacao">Nome da Organização *</label>
                         <input type="text" id="nome-organizacao" name="nomeOrganizacao">
                     </div>
 
                     <div class="input-group">
-                        <label for="cnpj">CNPJ (Opcional)</label>
-                        <input type="text" id="cnpj" name="cnpj">
+                        <label for="cnpj">CNPJ *</label>
+                        <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" maxlength="18">
                     </div>
                 </div>
 
@@ -126,8 +122,6 @@
                     </div>
                 </div>
             </fieldset>
-
-            <hr aria-hidden="true">
 
             <fieldset class="form-section">
                 <legend>3. Perfil de Conexão no Ecossistema</legend>
@@ -170,7 +164,7 @@
                     <label>Temas de Interesse (Marque os principais):</label>
                     <div class="options-grid">
                         <label><input type="checkbox" name="temas" value="inovacao"> Inovação & Startups</label>
-                        <label><input type="checkbox" name="temas" value="tecnologia"> Tecnologia & Transformação Digital</label>
+                        <label><input type="checkbox" name="temas" value="tecnologia"> Tecnologia & Transformação</label>
                         <label><input type="checkbox" name="temas" value="sustentabilidade"> Sustentabilidade</label>
                         <label><input type="checkbox" name="temas" value="economia-criativa"> Economia Criativa</label>
                         <label><input type="checkbox" name="temas" value="turismo"> Turismo Inteligente</label>
@@ -178,18 +172,19 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="desafios">Na sua opinião, qual o maior desafio para fortalecer a inovação em Nova Friburgo?</label>
+                    <label for="desafios">Qual o maior desafio para inovar em Nova Friburgo?</label>
                     <textarea id="desafios" name="desafios" rows="3" placeholder="Sua visão crítica sobre o cenário local..."></textarea>
                 </div>
             </fieldset>
 
             <div class="form-actions-submit">
-                <p><small>Ao clicar em submeter, seu perfil passará por uma auditoria (H5) antes de se tornar público.</small></p>
-                <button type="submit" class="btn-primary-massive">Registrar Perfil no Ecossistema</button>
+                <p><small>Ao clicar em submeter, seu perfil passará por uma auditoria antes de se tornar público.</small></p>
+                <button type="submit" id="btn-submit" class="btn-primary-massive">Registrar Perfil</button>
             </div>
 
         </form>
     </main>
 
+    <script src="js/cadastro.js"></script>
 </body>
 </html>

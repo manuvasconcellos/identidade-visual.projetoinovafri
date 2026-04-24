@@ -1,422 +1,164 @@
-/* ==========================================
-   1. TIPOGRAFIA OFICIAL
-   Importação via Google Fonts com os pesos exigidos (400=Regular, 600=Semibold, 700=Bold)
-=========================================== */
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap');
 
-/* ==========================================
-   2. DESIGN TOKENS (Variáveis Globais)
-   Extração exata do Brandbook InovaFri Hub
-=========================================== */
 :root {
-    /* Cores Absolutas */
-    --color-pink-light: #F9D4E0;
-    --color-purple-neon: #EB96FF;
-    --color-teal-dark: #0B5777;
-    --color-navy-base: #193153;
-
-    /* Cores Funcionais (Semântica) */
-    --bg-body: var(--color-navy-base);
-    --text-primary: #FFFFFF; /* Alto contraste para leitura no fundo escuro */
-    --text-secondary: var(--color-pink-light);
-    --action-primary: var(--color-purple-neon);
-    
-    /* Gradiente da Marca (usado no ícone e elementos de destaque) */
-    --gradient-brand: linear-gradient(135deg, var(--color-purple-neon) 0%, var(--color-teal-dark) 100%);
-
-    /* Tipografia */
-    --font-family-base: 'Sora', sans-serif;
+    --bg-deep: #0a111a; 
+    --brand-navy: #193153;
+    --action-primary: #EB96FF;
+    --action-secondary: #0B5777;
+    --gradient-brand: linear-gradient(135deg, var(--action-primary) 0%, var(--action-secondary) 100%);
+    --text-pure: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.65);
 }
 
-/* ==========================================
-   3. RESET ESTRUTURAL
-   Garante previsibilidade em diferentes navegadores
-=========================================== */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-/* ==========================================
-   4. COMPORTAMENTO BASE DO DOCUMENTO
-=========================================== */
 body {
-    font-family: var(--font-family-base);
-    background-color: var(--bg-body);
-    color: var(--text-primary);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased; /* Renderização limpa de fontes no Mac/iOS */
-    -moz-osx-font-smoothing: grayscale;
-    min-height: 100vh;
-    overflow-x: hidden;
+    font-family: 'Sora', sans-serif; background-color: var(--bg-deep);
+    color: var(--text-pure); line-height: 1.6; -webkit-font-smoothing: antialiased;
 }
 
-/* Tipografia Base */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-}
+a { color: var(--action-primary); text-decoration: none; }
 
-a {
-    color: var(--action-primary);
-    text-decoration: none;
-    transition: filter 0.2s ease-in-out;
+/* --- HEADER --- */
+#nav-global {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 5%; background: transparent; transition: all 0.4s ease;
 }
+#nav-global.scrolled {
+    background: rgba(10, 17, 26, 0.95); backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    padding: 1rem 5%;
+}
+.brand-text { font-size: 1.6rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+.brand-highlight { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+#nav-global nav ul { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+#nav-global nav a { color: var(--text-pure); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+#nav-global nav a:hover { color: var(--action-primary); }
+.admin-link-wrapper { border-left: 1px solid rgba(255,255,255,0.2); padding-left: 1.5rem; }
+.link-admin { color: var(--text-muted) !important; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem !important; }
+.link-admin:hover { color: #ff4b4b !important; }
+.btn-auth { background: var(--text-pure); color: var(--bg-deep) !important; padding: 0.7rem 1.5rem; border-radius: 4px; font-weight: 800 !important; transition: transform 0.2s; }
+.btn-auth:hover { transform: translateY(-2px); background: var(--action-primary); color: #fff !important; }
 
-a:hover {
-    filter: brightness(1.2);
+/* --- HERO MONUMENTAL --- */
+.hero-monumental {
+    position: relative; min-height: 100vh; width: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden; padding: 0 5%;
 }
-/* ==========================================
-   5. LAYOUT DO CABEÇALHO (HEADER)
-   Uso de Flexbox para separar Logo e Menu
-=========================================== */
-header {
-    display: flex;
-    justify-content: space-between; /* Empurra a logo para a esquerda e o menu para a direita */
-    align-items: center; /* Alinha tudo verticalmente ao centro */
-    padding: 1.5rem 5%; /* Espaçamento interno (topo/baixo e laterais) */
-    background-color: rgba(25, 49, 83, 0.95); /* Fundo da marca com leve transparência */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil separando o header */
-    position: sticky;
-    top: 0;
-    z-index: 100;
+.hero-bg-layer {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1920&q=80') no-repeat center center / cover;
 }
+.hero-bg-layer::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(10, 17, 26, 0.75) 0%, rgba(10, 17, 26, 0.98) 100%);
+}
+.hero-content-wrapper { position: relative; z-index: 2; max-width: 950px; margin-top: 5rem; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Remove as bolinhas da lista e coloca os links lado a lado */
-header nav ul {
-    display: flex;
-    gap: 2rem; /* Espaço entre os links do menu */
-    list-style: none;
-    align-items: center;
-}
+.badge-elite { display: inline-block; padding: 0.6rem 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; color: var(--text-muted); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; backdrop-filter: blur(5px); }
+.hero-monumental h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; }
+.text-gradient { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-subtitle { font-size: 1.15rem; color: var(--text-muted); font-weight: 400; max-width: 800px; margin: 0 auto 3.5rem auto; line-height: 1.6; }
 
-header nav a {
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
+/* BARRA DE BUSCA */
+.hero-search-form { width: 100%; max-width: 750px; margin: 0 auto 4rem auto; }
+.search-glass-wrapper { display: flex; align-items: center; padding: 0.5rem; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); transition: all 0.3s; }
+.search-glass-wrapper:focus-within { border-color: rgba(235, 150, 255, 0.4); box-shadow: 0 20px 40px rgba(235, 150, 255, 0.15); }
+.search-glass-wrapper svg { margin-left: 1.5rem; color: var(--text-muted); }
+.search-glass-wrapper input { flex: 1; background: transparent; border: none; padding: 1.2rem; font-size: 1rem; color: var(--text-pure); outline: none; }
+.btn-massive-search { background: var(--gradient-brand); color: #fff; padding: 1.2rem 2.5rem; border: none; border-radius: 100px; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: transform 0.2s; }
+.btn-massive-search:hover { transform: scale(1.02); }
 
-header nav a:hover {
-    color: var(--action-primary);
-}
+/* STATS */
+.hero-stats-grid { display: flex; justify-content: center; gap: 4rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 3rem; margin-top: 2rem; }
+.stat-box { display: flex; flex-direction: column; align-items: center; }
+.stat-suffix { font-size: 2rem; font-weight: 800; color: var(--action-primary); }
+.stat-number { font-size: 3.5rem; font-weight: 800; line-height: 1; margin-bottom: 0.5rem; color: var(--text-pure); }
+.stat-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); font-weight: 600; }
 
-/* ==========================================
-   6. CONTAINER PRINCIPAL (MAIN)
-   Centraliza o conteúdo da página e limita a largura
-=========================================== */
-main {
-    max-width: 1200px; /* Evita que o site estique infinitamente em telas gigantes */
-    margin: 0 auto; /* Centraliza o bloco na tela */
-    padding: 4rem 2rem; /* Espaçamento interno */
-    display: flex;
-    flex-direction: column;
-    gap: 4rem; /* Distância entre as seções (Busca, Sobre, Mapa) */
-}
+/* SEÇÕES GENÉRICAS */
+main { display: flex; flex-direction: column; gap: 0; }
+.section-container { max-width: 1200px; margin: 0 auto; padding: 6rem 5%; width: 100%; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+.section-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; line-height: 1.6;}
 
-/* ==========================================
-   7. ESTILOS DE BOTÕES E FORMULÁRIOS
-=========================================== */
-input[type="search"],
-input[type="text"] {
-    padding: 0.75rem 1rem;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--text-primary);
-    font-family: var(--font-family-base);
-}
+/* PROPOSTA DE VALOR (TESE DO HUB) */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.feature-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 2.5rem; transition: all 0.3s ease; border-top: 3px solid transparent; }
+.feature-card:hover { transform: translateY(-5px); border-top-color: var(--action-primary); background: rgba(255,255,255,0.04); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+.card-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.feature-card h3 { color: var(--text-pure); margin-bottom: 1rem; font-size: 1.3rem; }
+.feature-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;}
 
-button {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    background: var(--gradient-brand); /* Usando o gradiente da marca! */
-    color: var(--text-primary);
-    font-weight: 700;
-    cursor: pointer;
-    font-family: var(--font-family-base);
-    transition: opacity 0.2s;
-}
+/* FILTROS E GRID DE ATORES */
+.filter-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+.filter-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-muted); padding: 0.6rem 1.5rem; border-radius: 50px; cursor: pointer; font-family: inherit; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+.filter-btn:hover { border-color: var(--text-pure); color: var(--text-pure); }
+.filter-btn.active { background: var(--action-secondary); border-color: var(--action-secondary); color: var(--text-pure); }
 
-button:hover {
-    opacity: 0.9;
-}
+.actor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+.actor-card { background: var(--brand-navy); border: 1px solid rgba(255,255,255,0.05); padding: 2rem; border-radius: 12px; transition: transform 0.3s, opacity 0.3s; animation: scaleIn 0.4s ease; display: flex; flex-direction: column; align-items: flex-start; }
+.actor-card:hover { transform: translateY(-5px); border-color: rgba(235, 150, 255, 0.3); box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
+.actor-card.hidden { display: none; }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-/* ==========================================
-   8. RODAPÉ (FOOTER)
-=========================================== */
-footer {
-    padding: 3rem 5%;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 4rem;
-}
+.actor-badge { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--action-primary); margin-bottom: 1rem; font-weight: 800; border: 1px solid rgba(235, 150, 255, 0.3); padding: 0.3rem 0.8rem; border-radius: 50px; background: rgba(235, 150, 255, 0.05); }
+.actor-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.actor-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
 
-.footer-grid {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+.cta-central { text-align: center; margin-top: 2rem; }
+.btn-primary-massive { display: inline-block; padding: 1.2rem 2.5rem; background: var(--gradient-brand); color: #fff; border-radius: 8px; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; transition: transform 0.2s; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.btn-primary-massive:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 15px 30px rgba(235, 150, 255, 0.25); }
 
-footer ul {
-    list-style: none;
-}
-/* ==========================================
-   9. HERO SECTION (Vitrine Principal)
-=========================================== */
-.hero-section {
-    text-align: center;
-    padding: 6rem 0; /* Cria bastante respiro (whitespace) ao redor */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+/* MAPA */
+.map-placeholder { width: 100%; height: 500px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+.map-overlay-message { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.btn-outline-neon { border: 1px solid var(--action-primary); color: var(--action-primary); padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: background 0.2s; }
+.btn-outline-neon:hover { background: rgba(235, 150, 255, 0.1); }
 
-/* Etiqueta de contexto acima do título */
-.hero-badge {
-    display: inline-block;
-    background: rgba(235, 150, 255, 0.1);
-    color: var(--color-purple-neon);
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(235, 150, 255, 0.2);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+/* --- RODAPÉ INSTITUCIONAL --- */
+#footer-global { background-color: rgba(25, 49, 83, 0.3); border-top: 1px solid rgba(255,255,255,0.05); padding: 5rem 5% 2rem; margin-top: 4rem; }
+.footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; margin-bottom: 4rem; }
 
-/* Efeito de Gradiente no Texto Principal */
-.hero-section h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    background: var(--gradient-brand);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+.footer-col-brand p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 1.5rem; max-width: 90%; }
 
-.hero-subtitle {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 600px; /* Impede que o texto fique comprido e ruim de ler */
-    margin: 0 auto 3rem auto;
-    line-height: 1.6;
-}
+.footer-col-links h4, .footer-col-contact h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-pure); letter-spacing: 0.5px; }
+.footer-col-links ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.footer-col-links a { color: var(--text-muted); font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+.footer-col-links a:hover { color: var(--action-primary); }
 
-/* ==========================================
-   10. BARRA DE BUSCA AVANÇADA
-=========================================== */
-.hero-search-form {
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-}
+.footer-col-contact p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.8rem; }
+.footer-col-contact a { color: var(--action-primary); font-weight: 600; }
+.social-badges { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.social-badge { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-pure); font-weight: 800; transition: all 0.2s; }
+.social-badge:hover { background: var(--action-secondary); border-color: var(--action-secondary); transform: translateY(-3px); }
 
-.search-wrapper {
-    display: flex;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px; /* Formato de "pílula" moderno */
-    padding: 0.5rem;
-    align-items: center;
-    transition: all 0.3s ease;
-}
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; text-align: center; }
+.footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
 
-/* Efeito de destaque quando o usuário clica para digitar */
-.search-wrapper:focus-within {
-    border-color: var(--color-purple-neon);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 15px rgba(235, 150, 255, 0.2);
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+    .hero-monumental h1 { font-size: 3rem; }
+    .hero-stats-grid { flex-wrap: wrap; gap: 2rem; justify-content: center; }
+    .stat-box { width: 40%; }
+    .footer-container { grid-template-columns: 1fr 1fr; gap: 3rem; }
 }
-
-.search-wrapper svg {
-    margin-left: 1rem;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.search-wrapper input[type="search"] {
-    flex: 1;
-    background: transparent;
-    border: none;
-    padding: 1rem;
-    font-size: 1rem;
-    color: var(--text-primary);
-    outline: none; /* Remove a borda padrão feia do navegador */
-}
-
-.search-wrapper button {
-    border-radius: 50px; /* Acompanha o formato da barra */
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-}
-/* ==========================================
-   11. SEÇÕES GENÉRICAS (Alinhamento e Títulos)
-=========================================== */
-.section-container {
-    padding: 4rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-.section-header {
-    text-align: center;
-    max-width: 700px; /* Aumentei um pouco a largura para o texto respirar */
-    margin: 0 auto 3rem auto; /* O '3rem' empurra os cartões/mapa para baixo */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* ==========================================
-   12. CARDS DE VALOR (Seção Sobre)
-=========================================== */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.feature-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 2.5rem;
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px); /* Efeito de flutuar ao passar o mouse */
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(235, 150, 255, 0.3); /* Borda brilha em roxo */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.feature-card h3 {
-    font-size: 1.3rem;
-    color: var(--color-pink-light);
-    margin-bottom: 1rem;
-}
-
-.feature-card p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.95rem;
-}
-
-/* ==========================================
-   13. CONTAINER DO MAPA INTERATIVO
-=========================================== */
-.map-placeholder {
-    width: 100%;
-    height: 500px; /* Altura fixa para a janela do mapa */
-    background: rgba(0, 0, 0, 0.2); /* Fundo mais escuro para o mapa */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.map-overlay-message {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 600;
-}
-/* ==========================================
-   BOTÃO FLUTUANTE WHATSAPP
-=========================================== */
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    right: 40px;
-    background-color: #25d366; /* Verde oficial do WPP */
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    animation: pulse-wpp 2s infinite;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    background-color: #128c7e;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-
-/* Animação de pulsação sutil */
-@keyframes pulse-wpp {
-    0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
-}
-
-/* Responsividade: Ajusta posição em telas pequenas */
 @media (max-width: 768px) {
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-    }
-}
-.logo a {
-    text-decoration: none;
-}
-
-.brand-text {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-}
-
-.brand-highlight {
-    background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-left: 2px;
-}
-
-/* Garante que o header alinhe o texto corretamente agora */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 5%;
-    background-color: #193153;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    #nav-global { flex-direction: column; padding: 1rem; background: rgba(10, 17, 26, 0.98); }
+    #nav-global nav ul { flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1rem; }
+    .admin-link-wrapper { border-left: none; padding-left: 0; }
+    .hero-monumental h1 { font-size: 2.2rem; }
+    .search-glass-wrapper { flex-direction: column; border-radius: 16px; padding: 0.5rem; }
+    .search-glass-wrapper svg { display: none; }
+    .search-glass-wrapper input { width: 100%; text-align: center; }
+    .btn-massive-search { width: 100%; border-radius: 12px; }
+    .stat-box { width: 100%; }
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .footer-col-brand p { margin: 1.5rem auto; }
+    .social-badges { justify-content: center; }
 }

@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InovFriValley - Acesso Administrativo</title>
-    
+    <title>InovaFri Hub - Acesso Administrativo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/style-loginadmin.css">
 </head>
-
 <body>
 
-    <main aria-labelledby="login-title">
-        <header>
-            <h1 id="login-title">Acesso ao Painel</h1>
-            <p>Olá, administrador! Insira suas credenciais para gerenciar o ecossistema.</p>
+    <main class="admin-login-card" aria-labelledby="login-title">
+        
+        <div class="logo-container">
+            <span class="brand-text">InovaFri<span class="brand-highlight">Hub</span></span>
+            <span class="badge-admin">Admin</span>
+        </div>
+
+        <header class="login-header">
+            <h1 id="login-title">Acesso Restrito</h1>
+            <p>Insira suas credenciais operacionais para gerenciar o ecossistema.</p>
         </header>
 
+        <div id="error-message" class="alert-error hidden" role="alert"></div>
+
         <section>
-            <form action="/api/admin/login" method="POST" id="form-login-admin">
+            <form action="/api/admin/login" method="POST" id="form-login-admin" novalidate>
                 
                 <input type="hidden" name="csrf_token" value="gerado_dinamicamente_pelo_backend">
 
@@ -30,7 +34,7 @@
                     <legend class="sr-only">Credenciais de Acesso</legend>
 
                     <div class="input-group">
-                        <label for="email">E-mail</label>
+                        <label for="email">E-mail Operacional</label>
                         <input 
                             type="email" 
                             id="email" 
@@ -38,31 +42,37 @@
                             required 
                             autofocus
                             autocomplete="username"
-                            placeholder="seu@email.com"
+                            placeholder="admin@inovafrihub.com.br"
                         >
                     </div>
 
                     <div class="input-group">
-                        <label for="password">Senha</label>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            required 
-                            autocomplete="current-password"
-                        >
+                        <label for="password">Senha de Acesso</label>
+                        <div class="password-wrapper">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                required 
+                                autocomplete="current-password"
+                                placeholder="••••••••"
+                            >
+                            <button type="button" id="btn-toggle-password" class="toggle-password" aria-label="Mostrar senha">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
                     </div>
                 </fieldset>
 
                 <div class="form-actions">
-                    <a href="/admin/recuperar-senha" id="link-recuperar-senha">Esqueci minha senha</a>
-                    <button type="submit">Entrar no Sistema</button>
+                    <button type="submit" id="btn-submit">Autenticar Sessão</button>
+                    <a href="/admin/recuperar-senha" id="link-recuperar-senha">Esqueci minha credencial</a>
                 </div>
 
             </form>
         </section>
-
     </main>
 
+    <script src="js/login-admin.js"></script>
 </body>
 </html>

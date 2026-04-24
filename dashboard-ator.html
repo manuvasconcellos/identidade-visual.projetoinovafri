@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Painel - InovaFri Hub</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
-    
     <link rel="stylesheet" href="css/style-dashboardator.css">
 </head>
 <body>
 
-    <header role="banner">
-        <div class="brand">
-            <h1>InovFriValley</h1>
+    <header role="banner" class="dashboard-nav">
+        <div class="logo">
+            <a href="index.html" aria-label="Página Inicial">
+                <span class="brand-text">InovaFri<span class="brand-highlight">Hub</span></span>
+            </a>
         </div>
+        
         <nav aria-label="Menu Principal do Usuário">
             <ul>
-                <li><a href="/dashboard" aria-current="page">Visão Geral</a></li>
+                <li><a href="/dashboard" aria-current="page" class="active">Visão Geral</a></li>
                 <li><a href="/mapa-inovacao">Explorar Mapa</a></li>
-                <li><a href="/minhas-conexoes">Minhas Conexões</a></li>
-                <li><button type="button" aria-label="Encerrar sessão">Sair</button></li>
+                <li><a href="/minhas-conexoes">Minhas Conexões <span class="badge-notification">3</span></a></li>
+                <li><button type="button" aria-label="Encerrar sessão" class="btn-logout">Sair</button></li>
             </ul>
         </nav>
     </header>
@@ -32,64 +31,89 @@
     <main id="conteudo-principal" tabindex="-1">
         
         <header class="dashboard-header">
-            <h2>Bem-vindo(a), [Nome do Usuário]</h2>
-            <p>Gerencie sua atuação estratégica no ecossistema.</p>
+            <div>
+                <h2 id="greeting-title">Bem-vindo(a), <span id="user-name-display">Carregando...</span></h2>
+                <p>Gerencie sua atuação estratégica no ecossistema.</p>
+            </div>
+            <button id="btn-copy-profile" class="btn-outline-neon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                Copiar Link do Perfil
+            </button>
         </header>
 
-        <section aria-labelledby="status-perfil-titulo">
+        <section aria-labelledby="status-perfil-titulo" class="status-section">
             <h3 id="status-perfil-titulo" class="sr-only">Status do seu Perfil</h3>
             
             <div class="alert alert-warning" role="alert" aria-live="polite">
-                <strong>Análise Pendente:</strong> Seu perfil está sob revisão técnica. Durante este período, seu card não estará visível no Mapa de Inovações.
+                <strong>Análise Pendente:</strong> Seu perfil está sob revisão técnica (Aprovação em até 24h).
             </div>
-            
-            </section>
+
+            <div class="completion-widget">
+                <div class="completion-header">
+                    <span class="completion-label">Força do Perfil para Networking</span>
+                    <span class="completion-percentage" id="completion-value">75%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="completion-bar" style="width: 0%;"></div>
+                </div>
+                <p class="completion-hint">Usuários com perfil 100% preenchido possuem uma variância positiva de 3.4x no recebimento de conexões.</p>
+            </div>
+        </section>
 
         <div class="dashboard-grid-layout">
 
             <article class="card-perfil" aria-labelledby="resumo-cadastral">
-                <header>
+                <header class="card-header">
                     <h3 id="resumo-cadastral">Dados Básicos</h3>
-                    <a href="/perfil/editar/dados" aria-label="Editar informações pessoais e organizacionais">Editar Dados</a>
+                    <a href="/perfil/editar/dados" class="link-action">Editar</a>
                 </header>
-                <dl>
-                    <dt>Organização / Nome:</dt>
-                    <dd>[Nome da Empresa / Nome do Usuário]</dd>
-                    
-                    <dt>Tipo de Ator (H12):</dt>
-                    <dd>[Ex: Startup, Universidade]</dd>
-
-                    <dt>Cargo / Função (H6, H7):</dt>
-                    <dd>[Ex: CEO, Pesquisador]</dd>
-                    
-                    <dt>Localidade (H9):</dt>
-                    <dd>[Cidade, UF]</dd>
-                </dl>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="data-label">Organização</span>
+                        <strong class="data-value">TechMinds LTDA</strong>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Tipo de Ator</span>
+                        <span class="badge-ator">Startup</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Cargo Principal</span>
+                        <strong class="data-value">CEO & Founder</strong>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Operação Geográfica</span>
+                        <strong class="data-value">Nova Friburgo, RJ</strong>
+                    </div>
+                </div>
             </article>
 
             <article class="card-ecossistema" aria-labelledby="resumo-ecossistema">
-                <header>
-                    <h3 id="resumo-ecossistema">Sua Atuação no Ecossistema</h3>
-                    <a href="/perfil/editar/estrategia" aria-label="Editar estratégia de conexão no ecossistema">Atualizar Estratégia</a>
+                <header class="card-header">
+                    <h3 id="resumo-ecossistema">Matriz de Atuação</h3>
+                    <a href="/perfil/editar/estrategia" class="link-action">Ajustar</a>
                 </header>
-                <dl>
-                    <dt>Nível de Envolvimento:</dt>
-                    <dd>[Ex: Muito Ativo]</dd>
+                <div class="data-grid">
+                    <div class="data-item full-width">
+                        <span class="data-label">Postura no Ecossistema</span>
+                        <strong class="data-value text-highlight">Muito Ativo</strong>
+                    </div>
+                    
+                    <div class="data-item full-width mt-1">
+                        <span class="data-label">Recursos Ofertados (Oferta)</span>
+                        <div class="tags-container">
+                            <span class="tag">Mentoria Técnica</span>
+                            <span class="tag">Desenvolvimento Ágil</span>
+                        </div>
+                    </div>
 
-                    <dt>Perfil de Conexão:</dt>
-                    <dd>[Ex: Empreendedor, Mentor]</dd>
-
-                    <dt>O que você oferece (Recursos):</dt>
-                    <dd>
-                        <ul>
-                            <li>[Ex: Conhecimento técnico]</li>
-                            <li>[Ex: Mentoria em Gestão]</li>
-                        </ul>
-                    </dd>
-
-                    <dt>O que você busca (Expectativas):</dt>
-                    <dd>[Ex: Network, Captação de Recursos]</dd>
-                </dl>
+                    <div class="data-item full-width mt-1">
+                        <span class="data-label">O que Busca (Demanda)</span>
+                        <div class="tags-container">
+                            <span class="tag-outline">Captação de Seed Money</span>
+                            <span class="tag-outline">Networking B2B</span>
+                        </div>
+                    </div>
+                </div>
             </article>
 
         </div>
@@ -97,22 +121,13 @@
         <section aria-labelledby="acoes-rapidas-titulo">
             <h3 id="acoes-rapidas-titulo" class="sr-only">Ações Rápidas</h3>
             <div class="cta-container">
-                <p>Mantenha seus temas de interesse atualizados para receber conexões mais precisas.</p>
-                <a href="/perfil/temas" class="btn-primary">Gerenciar Temas de Interesse</a>
+                <p>O algoritmo de recomendação do Mapa de Inovações depende da granularidade dos seus dados. Mantenha os temas atualizados.</p>
+                <a href="/perfil/temas" class="btn-primary-massive">Calibrar Algoritmo de Interesses</a>
             </div>
         </section>
 
     </main>
 
-    <footer role="contentinfo">
-        <p>&copy; 2026 InovFriValley.</p>
-        <nav aria-label="Links de suporte">
-            <ul>
-                <li><a href="/suporte">Central de Ajuda</a></li>
-                <li><a href="/termos">Termos de Uso</a></li>
-            </ul>
-        </nav>
-    </footer>
-
+    <script src="js/dashboard.js"></script>
 </body>
 </html>

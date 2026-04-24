@@ -1,32 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
+
 /* ==========================================
-   FORÇAR O DARK MODE GLOBAL
+   FORÇAR O DARK MODE GLOBAL E RESET
 =========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #193153; /* O fundo escuro oficial do InovaFri Hub */
+    background-color: #193153;
     color: #ffffff;
     font-family: 'Sora', sans-serif;
     margin: 0;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
 }
+
+/* ==========================================
+   CABEÇALHO (HEADER) - CORREÇÃO DE ALINHAMENTO
+=========================================== */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background-color: rgba(25, 49, 83, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo a { text-decoration: none; display: flex; align-items: center; }
+.brand-text { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
+.brand-highlight {
+    background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-left: 2px;
+}
+
 /* ==========================================
    PÁGINA DE CADASTRO (REGISTRO DIRETO)
 =========================================== */
-
-/* 1. Container Principal e Cabeçalho */
 .container-cadastro-direto {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
-    font-family: 'Sora', sans-serif;
-    color: #ffffff;
 }
 
-.form-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
+.form-header { text-align: center; margin-bottom: 3rem; }
 .form-header h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
@@ -35,194 +56,108 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+.form-header p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; }
 
-.form-header p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
-}
-
-/* 2. Seções do Formulário (Cards) */
+/* SEÇÕES DO FORMULÁRIO (CARDS) */
 .form-section {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     padding: 2.5rem;
-    margin: 0;
+    margin-bottom: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .form-section legend {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #EB96FF; /* Destaque neon para ancorar o olhar do usuário */
-    background-color: #193153; /* Mesma cor do fundo do body para cortar a borda perfeitamente */
+    color: #EB96FF;
+    background-color: #193153;
     padding: 0 1rem;
     border-radius: 4px;
 }
 
-hr[aria-hidden="true"] {
-    border: none;
-    height: 2rem; /* Usa o HR apenas como espaçador invisível entre os blocos */
-    margin: 0;
-}
+/* SISTEMA DE GRIDS */
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.form-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
-/* 3. Sistema de Grids (Reduz a altura vertical do formulário) */
-.form-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.form-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-/* 4. Estilização dos Inputs */
-.input-group {
-    margin-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Remove a margem do último input dentro de um grid para não quebrar o alinhamento */
-.form-grid-2 .input-group, 
-.form-grid-3 .input-group {
-    margin-bottom: 0;
-}
+/* INPUTS */
+.input-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
+.form-grid-2 .input-group, .form-grid-3 .input-group { margin-bottom: 0; }
 
 .input-group label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #F9D4E0;
-    margin-bottom: 0.5rem;
+    font-size: 0.85rem; font-weight: 600; color: #F9D4E0; margin-bottom: 0.5rem;
 }
 
-.input-group input,
-.input-group select,
-.input-group textarea {
-    width: 100%;
-    padding: 1rem;
+.input-group input, .input-group select, .input-group textarea {
+    width: 100%; padding: 1rem;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 0.95rem;
+    border-radius: 6px; color: #ffffff;
+    font-family: inherit; font-size: 0.95rem;
     transition: all 0.2s ease;
-    box-sizing: border-box;
 }
 
-/* Estiliza o placeholder para não ficar muito claro */
-.input-group input::placeholder,
-.input-group textarea::placeholder {
+.input-group input::placeholder, .input-group textarea::placeholder {
     color: rgba(255, 255, 255, 0.3);
 }
 
-.input-group input:focus,
-.input-group select:focus,
-.input-group textarea:focus {
-    outline: none;
-    border-color: #EB96FF;
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+    outline: none; border-color: #EB96FF;
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 0 0 3px rgba(235, 150, 255, 0.15);
 }
-/* Correção para o fundo branco das opções do Select */
-.input-group select option {
-    background-color: #193153; /* Fundo azul-marinho da marca */
-    color: #ffffff;            /* Texto branco */
-    padding: 10px;             /* Dá um pouco de espaço para respirar */
+
+.input-group select option { background-color: #193153; color: #ffffff; padding: 10px; }
+
+/* CHECKBOXES */
+.checkbox-matrix { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255, 255, 255, 0.1); }
+.options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 0.8rem; }
+.options-grid label { display: flex; align-items: center; gap: 0.5rem; color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; cursor: pointer; }
+.options-grid input[type="checkbox"] { width: 1.2rem; height: 1.2rem; accent-color: #EB96FF; cursor: pointer; }
+
+/* ==========================================
+   ANIMAÇÕES E ESTADOS (JS DINÂMICO)
+=========================================== */
+.dynamic-field {
+    opacity: 1;
+    max-height: 200px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 1.5rem;
 }
 
-/* 5. Matriz de Checkboxes (Transforma os checkboxes numa grade limpa) */
-.checkbox-matrix {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+.dynamic-field.hidden {
+    opacity: 0; max-height: 0; margin-top: 0;
+    pointer-events: none; border: none; padding: 0;
 }
 
-.options-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 0.8rem;
-}
-
-.options-grid label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 400;
-    font-size: 0.9rem;
-    cursor: pointer;
-    text-transform: none;
-}
-
-.options-grid input[type="checkbox"] {
-    width: 1.2rem;
-    height: 1.2rem;
-    accent-color: #EB96FF; /* Pinta o checkbox nativo com a cor da marca */
-    cursor: pointer;
-}
-
-/* 6. Ação Final (Submit) */
-.form-actions-submit {
-    margin-top: 3rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.form-actions-submit p {
-    color: rgba(255, 255, 255, 0.5);
-    margin: 0;
-}
+/* BOTÃO DE SUBMIT */
+.form-actions-submit { margin-top: 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.form-actions-submit p { color: rgba(255, 255, 255, 0.5); margin: 0; }
 
 .btn-primary-massive {
-    width: 100%;
-    max-width: 400px;
-    padding: 1.2rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #ffffff;
+    width: 100%; max-width: 400px; padding: 1.2rem;
+    font-size: 1.1rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: #ffffff;
     background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border: none; border-radius: 8px; cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 
 .btn-primary-massive:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(235, 150, 255, 0.2);
-    filter: brightness(1.1);
+    transform: translateY(-2px); box-shadow: 0 15px 30px rgba(235, 150, 255, 0.2); filter: brightness(1.1);
 }
 
-/* 7. Responsividade Absoluta (Mobile) */
-@media (max-width: 768px) {
-    .container-cadastro-direto {
-        padding: 2rem 1rem;
-    }
-    
-    .form-section {
-        padding: 1.5rem;
-    }
+.btn-primary-massive:disabled {
+    background: #3a4b63; color: rgba(255, 255, 255, 0.5); cursor: not-allowed;
+    transform: none !important; box-shadow: none !important;
+}
 
-    /* Quebra todas as colunas para o formato empilhado em telas pequenas */
-    .form-grid-2, 
-    .form-grid-3 {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .form-grid-2 .input-group, 
-    .form-grid-3 .input-group {
-        margin-bottom: 0.5rem;
-    }
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .container-cadastro-direto { padding: 2rem 1rem; }
+    .form-section { padding: 1.5rem; }
+    .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; gap: 1rem; }
+    .form-grid-2 .input-group, .form-grid-3 .input-group { margin-bottom: 0.5rem; }
 }

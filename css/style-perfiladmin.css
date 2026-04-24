@@ -1,17 +1,13 @@
-/* ==========================================
-   PAINEL ADMINISTRATIVO (CENTRO DE COMANDO)
-=========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
 
-/* 1. Variáveis Nativas e Reset Base */
 :root {
-    --admin-bg-deep: #0f1d2b; /* Fundo super escuro para a área de trabalho */
-    --admin-surface: #193153; /* Azul marca para painéis e header */
-    --admin-accent: #EB96FF;  /* Roxo neon para destaque */
+    --admin-bg-deep: #0f1d2b; 
+    --admin-surface: #193153; 
+    --admin-accent: #EB96FF;  
     --admin-border: rgba(255, 255, 255, 0.08);
     --text-main: #ffffff;
     --text-muted: rgba(255, 255, 255, 0.6);
     
-    /* Cores Semânticas de Ação */
     --color-success: #00d284;
     --color-danger: #ff4b4b;
     --color-info: #0B5777;
@@ -24,257 +20,73 @@ body {
     color: var(--text-main);
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Trava a altura na tela toda */
-    overflow: hidden; /* O scroll vai acontecer apenas no main */
+    height: 100vh; 
+    overflow: hidden; 
 }
 
-/* ==========================================
-   2. CABEÇALHO GLOBAL (Top Bar)
-=========================================== */
+/* --- HEADER --- */
 .admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-    height: 70px;
-    background-color: var(--admin-surface);
-    border-bottom: 1px solid var(--admin-border);
-    z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 70px; background-color: var(--admin-surface);
+    border-bottom: 1px solid var(--admin-border); z-index: 10;
 }
 
-.admin-header h1 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 0;
-    background: linear-gradient(135deg, var(--admin-accent), var(--color-info));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+.admin-header h1 { font-size: 1.2rem; font-weight: 700; margin: 0; }
 
-.admin-profile {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    font-size: 0.9rem;
-}
+.admin-profile { display: flex; align-items: center; gap: 1.5rem; font-size: 0.9rem; }
+.admin-profile button { background: transparent; border: 1px solid var(--admin-border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+.admin-profile button:hover { color: var(--color-danger); border-color: var(--color-danger); }
 
-.admin-profile button {
-    background: transparent;
-    border: 1px solid var(--admin-border);
-    color: var(--text-muted);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
+/* --- LAYOUT & SIDEBAR --- */
+.admin-layout { display: grid; grid-template-columns: 260px 1fr; flex: 1; overflow: hidden; }
 
-.admin-profile button:hover {
-    color: var(--color-danger);
-    border-color: var(--color-danger);
-}
+.admin-sidebar { background-color: rgba(25, 49, 83, 0.5); border-right: 1px solid var(--admin-border); padding: 2rem 0; overflow-y: auto; }
+.admin-sidebar ul { list-style: none; padding: 0; margin: 0; }
+.nav-section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); padding: 0 1.5rem; margin: 1.5rem 0 0.5rem 0; font-weight: 700; }
+.admin-sidebar a { display: block; padding: 0.75rem 1.5rem; color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-left: 3px solid transparent; transition: all 0.2s; }
+.admin-sidebar a:hover, .admin-sidebar a.active { background-color: rgba(235, 150, 255, 0.05); border-left-color: var(--admin-accent); color: var(--admin-accent); }
 
-/* ==========================================
-   3. ARQUITETURA DO LAYOUT (Sidebar + Main)
-=========================================== */
-.admin-layout {
-    display: grid;
-    grid-template-columns: 260px 1fr; /* Sidebar fixa, o resto para o Workspace */
-    flex: 1;
-    overflow: hidden;
-}
+/* --- WORKSPACE & SPA --- */
+.admin-workspace { padding: 2.5rem; overflow-y: auto; }
 
-/* Navegação Lateral */
-.admin-sidebar {
-    background-color: rgba(25, 49, 83, 0.5);
-    border-right: 1px solid var(--admin-border);
-    padding: 2rem 0;
-    overflow-y: auto;
-}
+.admin-section { display: none; animation: fadeIn 0.3s ease-in-out; }
+.admin-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-.admin-sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+.section-header { margin-bottom: 1.5rem; }
+.section-header h2 { font-size: 1.5rem; margin: 0 0 0.5rem 0; }
+.subtitle { color: var(--text-muted); font-size: 0.95rem; }
 
-.nav-section-title {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    padding: 0 1.5rem;
-    margin: 1.5rem 0 0.5rem 0;
-    font-weight: 700;
-}
+/* --- TABELAS --- */
+.data-table-container { background: var(--admin-surface); border: 1px solid var(--admin-border); border-radius: 8px; overflow-x: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.admin-table { width: 100%; border-collapse: collapse; text-align: left; }
+.admin-table th { background-color: rgba(0,0,0,0.2); padding: 1rem; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); border-bottom: 2px solid var(--admin-border); }
+.admin-table td { padding: 1rem; border-bottom: 1px solid var(--admin-border); font-size: 0.9rem; vertical-align: middle; }
+.admin-table tbody tr:hover { background-color: rgba(255,255,255,0.02); }
 
-.admin-sidebar a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--text-main);
-    text-decoration: none;
-    font-size: 0.9rem;
-    border-left: 3px solid transparent;
-    transition: all 0.2s;
-}
-
-.admin-sidebar a:hover, 
-.admin-sidebar a[aria-current="page"] {
-    background-color: rgba(235, 150, 255, 0.05);
-    border-left-color: var(--admin-accent);
-    color: var(--admin-accent);
-}
-
-/* Área de Trabalho */
-.admin-workspace {
-    padding: 2.5rem;
-    overflow-y: auto; /* Permite scroll apenas aqui dentro */
-}
-
-/* ==========================================
-   4. TABELAS DE DADOS (Data Tables)
-=========================================== */
-.data-table-container {
-    background: var(--admin-surface);
-    border: 1px solid var(--admin-border);
-    border-radius: 8px;
-    overflow-x: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.admin-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-.admin-table th {
-    background-color: rgba(0,0,0,0.2);
-    padding: 1rem;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    border-bottom: 2px solid var(--admin-border);
-}
-
-.admin-table td {
-    padding: 1rem;
-    border-bottom: 1px solid var(--admin-border);
-    font-size: 0.9rem;
-    vertical-align: middle;
-}
-
-.admin-table tbody tr:hover {
-    background-color: rgba(255,255,255,0.02);
-}
-
-/* ==========================================
-   5. BOTÕES DE AÇÃO NA TABELA
-=========================================== */
-.action-cell {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.action-cell button {
-    padding: 0.4rem 0.8rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-    transition: filter 0.2s;
-}
-
+.action-cell { display: flex; gap: 0.5rem; }
+.action-cell button { padding: 0.4rem 0.8rem; border: none; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: filter 0.2s; color: white;}
 .action-cell button:hover { filter: brightness(1.2); }
+.btn-success { background: rgba(0, 210, 132, 0.2); border: 1px solid var(--color-success); color: var(--color-success) !important;}
+.btn-danger { background: rgba(255, 75, 75, 0.2); border: 1px solid var(--color-danger); color: var(--color-danger) !important;}
 
-.btn-secondary { background: rgba(255,255,255,0.1); color: var(--text-main); }
-.btn-success { background: rgba(0, 210, 132, 0.15); color: var(--color-success); border: 1px solid var(--color-success); }
-.btn-danger { background: rgba(255, 75, 75, 0.15); color: var(--color-danger); border: 1px solid var(--color-danger); }
+/* --- CARDS & FORMULÁRIOS --- */
+.grid-layout-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.admin-card { background: var(--admin-surface); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--admin-border); margin-bottom: 1.5rem; }
 
-/* ==========================================
-   6. FORMULÁRIOS ADMINISTRATIVOS E GRIDS
-=========================================== */
-.section-header {
-    margin-bottom: 1.5rem;
-}
+.admin-card h3 { margin-top: 0; font-size: 1.1rem; color: var(--admin-accent); }
 
-.section-header h2 {
-    font-size: 1.5rem;
-    margin: 0 0 0.5rem 0;
-}
+.input-action-group { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.input-action-group input, .admin-form select { flex: 1; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid var(--admin-border); border-radius: 4px; color: var(--text-main); font-family: inherit; outline: none; }
+.input-action-group input:focus, .admin-form select:focus { border-color: var(--admin-accent); }
+.admin-form select option { background-color: var(--admin-surface); color: var(--text-main); padding: 10px; }
+.input-action-group button { padding: 0.75rem 1.5rem; background: var(--color-info); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; white-space: nowrap; }
 
-.subtitle {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-hr[aria-hidden="true"] {
-    border: none;
-    border-top: 1px solid var(--admin-border);
-    margin: 3rem 0;
-}
-
-.grid-layout-2col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
-.admin-card {
-    background: var(--admin-surface);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--admin-border);
-    margin-bottom: 1.5rem;
-}
-/* Correção de legibilidade para as opções de Select no Admin */
-.admin-form select option {
-    background-color: var(--admin-surface); /* O azul escuro do painel */
-    color: var(--text-main);                /* Texto em branco */
-    padding: 10px;
-}
-
-/* Inputs Lineares (Input + Botão colados) */
-.input-action-group {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-}
-
-.input-action-group input,
-.admin-form select,
-.admin-form input[type="text"] {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    background: rgba(0,0,0,0.2);
-    border: 1px solid var(--admin-border);
-    border-radius: 4px;
-    color: var(--text-main);
-    font-family: inherit;
-    outline: none;
-}
-
-.input-action-group input:focus,
-.admin-form select:focus,
-.admin-form input[type="text"]:focus {
-    border-color: var(--admin-accent);
-}
-
-.input-action-group button,
-.admin-form button[type="submit"] {
-    padding: 0.75rem 1.5rem;
-    background: var(--color-info);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.admin-form label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 600;
-}
+/* --- TOAST NOTIFICATIONS --- */
+.toast-container { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 9999; }
+.toast { min-width: 250px; background: var(--admin-surface); color: white; padding: 1rem 1.5rem; border-radius: 6px; border-left: 4px solid var(--admin-accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-size: 0.9rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; animation: slideInRight 0.3s ease forwards; }
+.toast.success { border-left-color: var(--color-success); }
+.toast.danger { border-left-color: var(--color-danger); }
+.toast.fade-out { animation: fadeOutRight 0.3s ease forwards; }
+@keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
