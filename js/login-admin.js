@@ -67,6 +67,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnSubmit.disabled = true;
                 btnSubmit.textContent = 'Autenticando...';
             }
+            if (hasError) {
+                e.preventDefault();
+                errorBox.textContent = errorMessage;
+                errorBox.classList.remove('hidden');
+                
+                btnSubmit.style.animation = "shake 0.4s";
+                setTimeout(() => btnSubmit.style.animation = "", 400);
+            } else {
+                // Impede o envio padrão do formulário
+                e.preventDefault();
+
+                btnSubmit.disabled = true;
+                btnSubmit.textContent = 'Verificando Credenciais...';
+
+                // Simula o tempo de resposta do servidor e redireciona para o Painel Admin
+                setTimeout(() => {
+                    window.location.href = 'perfil-admin.html';
+                }, 800);
+            }
         });
     }
 });
