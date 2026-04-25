@@ -1,61 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --bg-deep: #121a16; 
+    --brand-navy: #193f2b; 
+    --action-primary: #d4af37; 
+    --action-secondary: #c19a6b; 
+    --text-pure: #ffffff;
+    /* Muted atualizado para leitura sobre o fundo branco do cartão */
+    --text-muted: rgba(25, 63, 43, 0.65); 
+    --gradient-brand: linear-gradient(135deg, var(--action-primary) 0%, var(--action-secondary) 100%);
+}
 
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
     display: flex; align-items: center; justify-content: center;
     min-height: 100vh; margin: 0;
-    background-color: #0f1d2b; 
-    font-family: 'Sora', sans-serif; color: #ffffff;
+    /* Fundo da tela permanece escuro para destacar o cartão */
+    background-color: var(--bg-deep); 
+    font-family: 'Poppins', sans-serif; 
     background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
 }
 
+/* ==========================================
+   O CARTÃO DE ACESSO (BRANCO INSTITUCIONAL)
+=========================================== */
 .admin-login-card {
     width: 100%; max-width: 420px;
-    background: rgba(25, 49, 83, 0.95);
-    padding: 3rem 2.5rem; border-radius: 12px;
+    background: #ffffff; /* Fundo sólido branco */
+    padding: 3rem 2.5rem; 
+    border-radius: 12px;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: 4px solid #EB96FF;
-    backdrop-filter: blur(10px);
+    border-top: 4px solid var(--action-primary); /* Ancoragem de Autoridade Dourada */
 }
 
 /* Identidade Visual */
-.logo-container { text-align: center; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-.brand-text { font-size: 1.8rem; font-weight: 700; color: #ffffff; letter-spacing: -0.5px; }
-.brand-highlight { background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.badge-admin { background: rgba(235, 150, 255, 0.1); color: #EB96FF; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(235, 150, 255, 0.3); }
+.logo-container { 
+    text-align: center; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; 
+}
+.brand-logo { max-width: 180px; height: auto; display: block; margin: 0 auto; }
 
-/* Cabeçalho */
-.login-header { text-align: center; margin-bottom: 2rem; }
-.login-header h1 { font-size: 1.4rem; margin: 0 0 0.5rem 0; }
-.login-header p { font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); margin: 0; line-height: 1.5; }
+.badge-admin { 
+    background: rgba(212, 175, 55, 0.15); 
+    color: var(--brand-navy); 
+    padding: 0.3rem 1rem; 
+    border-radius: 50px; 
+    font-size: 0.75rem; 
+    font-weight: 800;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    border: 1px solid rgba(212, 175, 55, 0.4); 
+}
+
+/* Cabeçalho do Formulário (Inversão para Escuro) */
+.login-header { text-align: center; margin-bottom: 2.5rem; }
+.login-header h1 { font-size: 1.6rem; margin: 0 0 0.5rem 0; font-weight: 800; color: var(--brand-navy); letter-spacing: -0.5px;}
+.login-header p { font-size: 0.95rem; color: var(--text-muted); margin: 0; line-height: 1.5; font-weight: 500; }
 
 /* Feedback de Erro */
-.alert-error { background: rgba(255, 77, 77, 0.1); border-left: 3px solid #ff4d4d; color: #ff8080; padding: 1rem; border-radius: 4px; font-size: 0.85rem; margin-bottom: 1.5rem; display: block; }
+.alert-error { background: rgba(255, 77, 77, 0.1); border-left: 3px solid #ff4d4d; color: #d32f2f; padding: 1rem; border-radius: 4px; font-size: 0.85rem; margin-bottom: 1.5rem; display: block; font-weight: 600;}
 .alert-error.hidden { display: none; }
 
-/* Formulário */
+/* Formulário e Inputs */
 fieldset { border: none; padding: 0; margin: 0; }
 .input-group { margin-bottom: 1.5rem; }
-.input-group label { display: block; margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255, 255, 255, 0.7); font-weight: 600; }
-.input-group input { width: 100%; padding: 1rem; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #ffffff; font-family: inherit; font-size: 1rem; transition: all 0.2s ease; }
-.input-group input:focus { outline: none; border-color: #EB96FF; background: rgba(255, 255, 255, 0.05); box-shadow: 0 0 0 3px rgba(235, 150, 255, 0.15); }
+.input-group label { display: block; margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--brand-navy); font-weight: 800; }
+
+.input-group input { 
+    width: 100%; padding: 1.1rem 1rem; 
+    background: #f8f9fa; /* Fundo cinza extremamente leve para contraste da caixa de texto */
+    border: 1px solid rgba(25, 63, 43, 0.2); 
+    border-radius: 6px; 
+    color: var(--brand-navy); 
+    font-family: inherit; font-size: 1rem; font-weight: 500;
+    transition: all 0.2s ease; 
+}
+.input-group input::placeholder { color: rgba(25, 63, 43, 0.35); }
+.input-group input:focus { 
+    outline: none; 
+    border-color: var(--action-primary); 
+    background: #ffffff; 
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15); 
+}
 .input-group input.error-input { border-color: #ff4d4d; }
 
 /* UX de Senha */
 .password-wrapper { position: relative; display: flex; align-items: center; }
 .password-wrapper input { padding-right: 3rem; }
-.toggle-password { position: absolute; right: 10px; background: none; border: none; color: rgba(255, 255, 255, 0.4); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; transition: color 0.2s; }
-.toggle-password:hover, .toggle-password.active { color: #EB96FF; }
+.toggle-password { position: absolute; right: 10px; background: none; border: none; color: rgba(25, 63, 43, 0.4); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; transition: color 0.2s; }
+.toggle-password:hover, .toggle-password.active { color: var(--action-primary); }
 
-/* Ações */
-.form-actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-button[type="submit"] { width: 100%; padding: 1rem; background: linear-gradient(135deg, #0B5777 0%, #193153 100%); border: 1px solid #0B5777; border-radius: 6px; color: #ffffff; font-weight: 700; font-size: 0.95rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; }
-button[type="submit"]:hover:not(:disabled) { background: #0B5777; box-shadow: 0 5px 15px rgba(11, 87, 119, 0.4); transform: translateY(-1px); }
-button[type="submit"]:disabled { background: #193153; color: rgba(255, 255, 255, 0.3); border-color: transparent; cursor: not-allowed; }
+/* Ações e Botão */
+.form-actions { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
 
-#link-recuperar-senha { color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 0.8rem; text-align: center; transition: color 0.2s; }
-#link-recuperar-senha:hover { color: #EB96FF; text-decoration: underline; }
+/* Correção de Renderização do Botão */
+.btn-submit-admin { 
+    display: block; width: 100%; text-align: center; text-decoration: none; padding: 1.2rem; 
+    background: var(--gradient-brand); 
+    border: none; border-radius: 6px; 
+    color: var(--bg-deep); /* Texto escuro exigido pelo fundo Dourado */
+    font-weight: 800; font-size: 0.95rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; 
+}
+.btn-submit-admin:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.25); filter: brightness(1.1); }
+
+#link-recuperar-senha { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; text-align: center; transition: color 0.2s; font-weight: 600; }
+#link-recuperar-senha:hover { color: var(--brand-navy); text-decoration: underline; }

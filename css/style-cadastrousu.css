@@ -1,45 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* ==========================================
-   FORÇAR O DARK MODE GLOBAL E RESET
+   VARIÁVEIS GLOBAIS (NOVA IDENTIDADE)
+=========================================== */
+:root {
+    --bg-deep: #121a16; 
+    --brand-navy: #193f2b; 
+    --action-primary: #d4af37; 
+    --action-secondary: #c19a6b; 
+    --gradient-brand: linear-gradient(135deg, var(--action-primary) 0%, var(--action-secondary) 100%);
+    --text-pure: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================
+   RESET E CONFIGURAÇÃO GLOBAL
 =========================================== */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #193153;
-    color: #ffffff;
-    font-family: 'Sora', sans-serif;
+    background-color: var(--bg-deep);
+    color: var(--text-pure);
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
 }
 
 /* ==========================================
-   CABEÇALHO (HEADER) - CORREÇÃO DE ALINHAMENTO
+   CABEÇALHO (HEADER) - PADRÃO INSTITUCIONAL
 =========================================== */
 header {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1.2rem 5%;
-    background-color: rgba(25, 49, 83, 0.95);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--text-pure); /* Fundo branco para destacar a logo, igual ao index */
+    border-bottom: 1px solid rgba(193, 154, 107, 0.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 .logo a { text-decoration: none; display: flex; align-items: center; }
-.brand-text { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
-.brand-highlight {
-    background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-left: 2px;
-}
+.brand-logo { max-height: 45px; width: auto; object-fit: contain; }
 
 /* ==========================================
-   PÁGINA DE CADASTRO (REGISTRO DIRETO)
+   PÁGINA DE CADASTRO
 =========================================== */
 .container-cadastro-direto {
     max-width: 900px;
@@ -51,17 +58,17 @@ header {
 .form-header h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-.form-header p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; }
+.form-header p { color: var(--text-muted); font-size: 1.1rem; }
 
 /* SEÇÕES DO FORMULÁRIO (CARDS) */
 .form-section {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 2.5rem;
     margin-bottom: 2rem;
@@ -71,10 +78,11 @@ header {
 .form-section legend {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #EB96FF;
-    background-color: #193153;
-    padding: 0 1rem;
+    color: var(--action-primary);
+    background-color: var(--brand-navy);
+    padding: 0.2rem 1.2rem;
     border-radius: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 /* SISTEMA DE GRIDS */
@@ -86,14 +94,14 @@ header {
 .form-grid-2 .input-group, .form-grid-3 .input-group { margin-bottom: 0; }
 
 .input-group label {
-    font-size: 0.85rem; font-weight: 600; color: #F9D4E0; margin-bottom: 0.5rem;
+    font-size: 0.85rem; font-weight: 600; color: var(--action-secondary); margin-bottom: 0.5rem;
 }
 
 .input-group input, .input-group select, .input-group textarea {
     width: 100%; padding: 1rem;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px; color: #ffffff;
+    border-radius: 6px; color: var(--text-pure);
     font-family: inherit; font-size: 0.95rem;
     transition: all 0.2s ease;
 }
@@ -103,21 +111,22 @@ header {
 }
 
 .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
-    outline: none; border-color: #EB96FF;
+    outline: none; border-color: var(--action-primary);
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 0 3px rgba(235, 150, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15); /* Sombra de foco em Dourado */
 }
 
-.input-group select option { background-color: #193153; color: #ffffff; padding: 10px; }
+.input-group select option { background-color: var(--bg-deep); color: var(--text-pure); padding: 10px; }
 
 /* CHECKBOXES */
 .checkbox-matrix { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(255, 255, 255, 0.1); }
 .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 0.8rem; }
-.options-grid label { display: flex; align-items: center; gap: 0.5rem; color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; cursor: pointer; }
-.options-grid input[type="checkbox"] { width: 1.2rem; height: 1.2rem; accent-color: #EB96FF; cursor: pointer; }
+.options-grid label { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem; cursor: pointer; transition: color 0.2s; }
+.options-grid label:hover { color: var(--action-primary); }
+.options-grid input[type="checkbox"] { width: 1.2rem; height: 1.2rem; accent-color: var(--action-primary); cursor: pointer; }
 
 /* ==========================================
-   ANIMAÇÕES E ESTADOS (JS DINÂMICO)
+   ANIMAÇÕES E ESTADOS
 =========================================== */
 .dynamic-field {
     opacity: 1;
@@ -132,25 +141,30 @@ header {
     pointer-events: none; border: none; padding: 0;
 }
 
-/* BOTÃO DE SUBMIT */
+/* BOTÃO DE SUBMIT (CONTRASTE CRÍTICO APLICADO) */
 .form-actions-submit { margin-top: 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-.form-actions-submit p { color: rgba(255, 255, 255, 0.5); margin: 0; }
+.form-actions-submit p { color: var(--text-muted); margin: 0; }
 
 .btn-primary-massive {
     width: 100%; max-width: 400px; padding: 1.2rem;
-    font-size: 1.1rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 1px; color: #ffffff;
-    background: linear-gradient(135deg, #EB96FF 0%, #0B5777 100%);
+    font-size: 1.1rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 1px; 
+    color: var(--bg-deep); /* Texto ESCURO para contraste em fundo dourado */
+    background: var(--gradient-brand);
     border: none; border-radius: 8px; cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
 }
 
 .btn-primary-massive:hover {
-    transform: translateY(-2px); box-shadow: 0 15px 30px rgba(235, 150, 255, 0.2); filter: brightness(1.1);
+    transform: translateY(-2px); 
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.25); 
+    filter: brightness(1.1);
 }
 
 .btn-primary-massive:disabled {
-    background: #3a4b63; color: rgba(255, 255, 255, 0.5); cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.1); 
+    color: rgba(255, 255, 255, 0.3); 
+    cursor: not-allowed;
     transform: none !important; box-shadow: none !important;
 }
 

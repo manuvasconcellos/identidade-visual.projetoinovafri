@@ -6,7 +6,7 @@
     <title>Recuperar Senha - InovaFri Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style-recuperarsenha.css">
 </head>
 <body>
@@ -14,7 +14,9 @@
     <main class="recuperacao-container" aria-labelledby="recuperacao-titulo">
         
         <div class="brand-header">
-            <span class="brand-text">InovaFri<span class="brand-highlight">Hub</span></span>
+            <a href="index.html" aria-label="Voltar para a Home">
+                <img src="assets/Logo-InovaFri.png" alt="InovaFri Hub" width="180" height="auto" class="brand-logo" fetchpriority="high">
+            </a>
         </div>
 
         <header id="header-instrucoes">
@@ -50,25 +52,8 @@
                     <button type="submit" id="btn-submit" class="btn-primary-block">Enviar Link de Recuperação</button>
                 </div>
             </form>
-
-            <div id="alerta-sucesso" class="estado-sucesso hidden" aria-live="polite">
-                <h2>Verifique sua caixa de entrada</h2>
-                <p>
-                    Se o endereço <strong>informado</strong> estiver registrado em nossa base de dados, 
-                    você receberá as instruções em instantes.
-                </p>
-                <p><small>Atenção: Não se esqueça de verificar a pasta de Spam ou Lixo Eletrônico.</small></p>
-                
-                <a href="login.html" class="btn-secondary">Retornar ao Login</a>
-            </div>
-
         </section>
-
-        <footer class="recuperacao-footer" id="footer-voltar">
-            <p>Lembrou da sua senha? <a href="login.html">Voltar para o Login</a></p>
-        </footer>
     </main>
-
     <script src="js/recuperar.js"></script>
 </body>
 </html>

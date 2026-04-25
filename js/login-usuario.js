@@ -66,25 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnSubmit.disabled = true;
                 btnSubmit.textContent = 'Entrando...';
             }
-            if (hasError) {
-                e.preventDefault(); 
-                errorBox.textContent = errorMessage;
-                errorBox.classList.remove('hidden');
-                
-                btnSubmit.style.animation = "shake 0.4s";
-                setTimeout(() => btnSubmit.style.animation = "", 400);
-            } else {
-                // Impede o envio padrão do formulário para não dar erro 404
-                e.preventDefault(); 
-                
-                btnSubmit.disabled = true;
-                btnSubmit.textContent = 'Autenticando...';
-
-                // Simula o tempo de resposta do servidor e redireciona para o Dashboard
-                setTimeout(() => {
-                    window.location.href = 'dashboard-ator.html';
-                }, 800);
-            }
+            
         });
     }
 });

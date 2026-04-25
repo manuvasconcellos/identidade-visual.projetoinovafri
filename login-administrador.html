@@ -6,7 +6,7 @@
     <title>InovaFri Hub - Acesso Administrativo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style-loginadmin.css">
 </head>
 <body>
@@ -14,12 +14,14 @@
     <main class="admin-login-card" aria-labelledby="login-title">
         
         <div class="logo-container">
-            <span class="brand-text">InovaFri<span class="brand-highlight">Hub</span></span>
-            <span class="badge-admin">Admin</span>
+            <a href="index.html" aria-label="Página Inicial">
+                <img src="assets/Logo-InovaFri.png" alt="InovaFri Hub" width="180" height="auto" class="brand-logo" fetchpriority="high">
+            </a>
+            <span class="badge-admin">Acesso Operacional</span>
         </div>
 
         <header class="login-header">
-            <h1 id="login-title">Acesso Restrito</h1>
+            <h1 id="login-title">Área Restrita</h1>
             <p>Insira suas credenciais operacionais para gerenciar o ecossistema.</p>
         </header>
 
@@ -65,8 +67,10 @@
                 </fieldset>
 
                 <div class="form-actions">
-                    <button type="submit" id="btn-submit">Autenticar Sessão</button>
-                    <a href="/admin/recuperar-senha" id="link-recuperar-senha">Esqueci minha credencial</a>
+                    <a href="perfil-admin.html" class="btn-submit-admin">
+                        Autenticar Sessão
+                    </a>
+                    <a href="recuperarsenha.html" id="link-recuperar-senha">Esqueci minha credencial</a>
                 </div>
 
             </form>

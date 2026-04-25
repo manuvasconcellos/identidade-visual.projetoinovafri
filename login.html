@@ -6,7 +6,7 @@
     <title>Login - InovaFri Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style-loginusuario.css">
 </head>
 <body>
@@ -14,20 +14,22 @@
     <main class="login-container">
         
         <aside class="login-media" aria-hidden="true">
-            <img src="/assets/login-imagem.jpg" alt="" role="presentation">
+            <img src="assets/bg-friburgo-tech.jpg" alt="" role="presentation">
             <div class="media-overlay-text">
-                <h2>Conecte-se ao polo de inovação da região serrana.</h2>
+                <h2>Conecte-se ao ecossistema de inovação da região serrana.</h2>
             </div>
         </aside>
 
         <section class="login-content">
             <div class="brand-header">
-                <span class="brand-text">InovaFri<span class="brand-highlight">Hub</span></span>
+                <a href="index.html" aria-label="Voltar à Página Inicial">
+                    <img src="assets/Logo-InovaFri.png" alt="InovaFri Hub" width="180" height="auto" class="brand-logo" fetchpriority="high">
+                </a>
             </div>
 
             <header class="login-header">
-                <h1>Acesse sua conta</h1>
-                <p>Insira suas credenciais para continuar.</p>
+                <h1>Acesso ao Ecossistema</h1>
+                <p>Insira as suas credenciais operacionais para continuar.</p>
             </header>
             
             <div id="error-message" class="alert-error hidden" role="alert"></div>
@@ -37,19 +39,19 @@
                     <legend class="sr-only">Credenciais de Acesso</legend>
                     
                     <div class="input-group">
-                        <label for="email">E-mail</label>
+                        <label for="email">E-mail Institucional</label>
                         <input 
                             type="email" 
                             id="email" 
                             name="email" 
                             required 
                             autocomplete="email"
-                            placeholder="seu@email.com"
+                            placeholder="o-seu@email.com"
                         >
                     </div>
                     
                     <div class="input-group">
-                        <label for="senha">Senha</label>
+                        <label for="senha">Palavra-passe</label>
                         <div class="password-wrapper">
                             <input 
                                 type="password" 
@@ -59,17 +61,19 @@
                                 autocomplete="current-password"
                                 placeholder="••••••••"
                             >
-                            <button type="button" id="btn-toggle-password" class="toggle-password" aria-label="Mostrar senha">
+                            <button type="button" id="btn-toggle-password" class="toggle-password" aria-label="Mostrar palavra-passe">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                             </button>
                         </div>
-                        <a href="recuperarsenha.html" id="link-recuperar" tabindex="4">Esqueceu sua senha?</a>
+                        <a href="recuperarsenha.html" id="link-recuperar" tabindex="4">Esqueceu a sua credencial?</a>
                     </div>
                 </fieldset>
                 
                 <div class="form-actions">
-                    <button type="submit" class="btn-submit" id="btn-submit">Entrar no Ecossistema</button>
-                    <p class="register-prompt">Ainda não tem cadastro? <a href="cadastro.html" class="link-destaque">Crie sua conta</a></p>
+                    <a href="dashboard-ator.html" class="btn-submit">
+                        Autenticar Sessão
+                    </a>
+                    <p class="register-prompt">Ainda não possui registo? <a href="cadastro.html" class="link-destaque">Solicitar Acesso</a></p>
                 </div>
             </form>
         </section>
